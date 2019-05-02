@@ -28,6 +28,18 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/dosen/{dosen}', 'DosenController@show')->name('admin.dosen.show'); //routing tampilkan detail dosen
     Route::get('/admin/dosen/{dosen}/edit', 'DosenController@edit')->name('admin.dosen.edit');  //routing tampilkan form edit dosen
 
+    /** Routing Pengelolaan Proposal KP */
+    Route::post('/admin/proposal-kp/cari', 'ProposalKPCariController@show')->name('admin.proposal-kpcari.show'); //routing pencarian dosen
+    Route::get('/admin/proposal-kp/cari', 'ProposalKPController@index')->name('admin.proposal-kpcari.index'); //routing pencarian dosen
+
+    Route::get('/admin/proposal-kp', 'ProposalKPController@index')->name('admin.proposal-kp.index');  //routing lihat daftar proposal kp
+    Route::post('/admin/proposal-kp', 'ProposalKPController@store')->name('admin.proposal-kp.store'); //routing simpan data proposal kp baru
+    Route::get('/admin/proposal-kp/create', 'ProposalKPController@create')->name('admin.proposal-kp.create'); //routing tampilkan form data proposal kp baru
+    Route::delete('/admin/proposal-kp/{proposal-kp}', 'ProposalKPController@destroy')->name('admin.proposal-kp.destroy'); //routing hapus data proposal kp
+    Route::patch('/admin/proposal-kp/{proposal-kp}', 'ProposalKPController@update')->name('admin.proposal-kp.update'); //routing simpan perubahan data proposal kp
+    Route::get('/admin/proposal-kp/{proposal-kp}', 'ProposalKPController@show')->name('admin.proposal-kp.show'); //routing tampilkan detail proposal kp
+    Route::get('/admin/proposal-kp/{proposal-kp}/edit', 'ProposalKPController@edit')->name('admin.proposal-kp.edit');  //routing tampilkan form edit proposal kp
+
 
     /** Routing Pengelolaan Mahasiswa */
     Route::post('/admin/mahasiswa/cari', 'MahasiswaCariController@show')->name('admin.mahasiswacari.show'); //routing pencarian mahasiswa

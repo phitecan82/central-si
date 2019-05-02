@@ -23,12 +23,14 @@ class AdminSeeder extends Seeder
         $manage_lecturers = Permission::create(['name' => 'manage_lecturers']);
         $manage_students = Permission::create(['name' => 'manage_students']);
         $manage_users = Permission::create(['name' => 'manage_users']);
+        $manage_proposalkp = Permission::create(['name' => 'manage_proposalkp']);
 
         $admin = Role::create(['name' => 'admin']);
 
         $admin->givePermissionTo($manage_lecturers);
         $admin->givePermissionTo($manage_students);
         $admin->givePermissionTo($manage_users);
+        $admin->givePermissionTo($manage_proposalkp);
 
         $user->assignRole('admin');
 
