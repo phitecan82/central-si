@@ -60,7 +60,9 @@ class ProposalKPController extends Controller
      */
     public function show($id)
     {
-        //
+        $KpProposal = KpProposal::findOrFail($id);
+        return view('backend.proposal-kp.show', compact('KpProposal'));
+        // echo "tes";
     }
 
     /**
