@@ -33,7 +33,8 @@ class ProposalKPController extends Controller
      */
     public function create()
     {
-        //
+        $instansi = KpInstansi::pluck('nama', 'id');
+        return view('backend.proposal-kp.create', compact('instansi'));
     }
 
     /**
@@ -44,7 +45,11 @@ class ProposalKPController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        KpProposal::create($data);
+        session()->flash('flash_success', 'Berhasil menambahkan data proposal kp dengan judul '. $request->input('judul'));
+        // return redirect()->route('admin.dosen.show', [$user->id]);
+        return redirect()->route('admin.proposal-kp.index');
     }
 
     /**

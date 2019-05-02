@@ -40,7 +40,7 @@
 
             <li class="nav-item nav-dropdown">
                 <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-people"></i> Pengelolaan KP</a>
+                    <i class="nav-icon icon-doc"></i> Pengelolaan KP</a>
                 <ul class="nav-dropdown-items">
 
                     {{-- Menu Proposal KP--}}
