@@ -7,6 +7,7 @@ use App\KpInstansi;
 use App\KpMahasiswa;
 use App\KpPeserta;
 use App\KpProposal;
+use DB;
 
 class ProposalKPController extends Controller
 {
@@ -60,7 +61,13 @@ class ProposalKPController extends Controller
      */
     public function show($id)
     {
-        //
+        $KpProposal = DB::table('kp_proposal')
+                        ->join('kp_instansi', 'kp_proposal.instansi_id', '=', 'kp_instansi.id')
+                        ->select('kp_proposal.id', 'kp_proposal.judul', 'kp_proposal.latar_belakang', 'kp_proposal.tujuan', 'kp_proposal.usulan_mulai_at', 'kp_proposal.usulan_selesai_at', 'kp_proposal.catatan', 'kp_instansi.nama', DB::raw('(CASE WHEN kp_proposal.status_proposal = 1 THEN '. "'Disetujui'" .'ELSE' . "'Belum/Tidak Disetujui'" . 'END) AS status_proposal'))
+                        ->where('kp_proposal.id', '=', $id)
+                        ->get();
+        $KpProposal = $KpProposal[0];
+        return view('backend.proposal-kp.show', compact('KpProposal'));
     }
 
     /**
