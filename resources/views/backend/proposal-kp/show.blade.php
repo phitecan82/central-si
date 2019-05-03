@@ -70,6 +70,13 @@
                     </div>
 
                     {{ Form::close() }}
+                    
+                    <h5>Daftar anggota kelompok KP</h5>
+                    <ul>
+                    @foreach($anggotas as $anggota)
+                        <li>{{ $anggota->nama }}</li>
+                    @endforeach
+                    </ul>
 
                 </div>
 
