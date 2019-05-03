@@ -56,6 +56,7 @@
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.proposal-kp.show', [$kp_proposal->id])) !!}
                                     {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id])) !!}
+                                    {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id])) !!}
                                     {!! cui_btn_delete(route('admin.proposal-kp.destroy', [$kp_proposal->id]), "Anda yakin akan menghapus data proposal kp ini?") !!}
                                 </td>
                             </tr>
