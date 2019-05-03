@@ -106,7 +106,13 @@ class ProposalKPController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    {
-        //
+    {   
+        $proposal = KpProposal::findOrFail($id);
+        $KpProposal = KpProposal::destroy($id);       
+
+        session()->flash('flash_success', 'Berhasil Menghapus data proposal kp dengan judul '.$proposal->judul);
+        // return redirect()->route('admin.dosen.show', [$user->id]);
+        return redirect()->route('admin.proposal-kp.index');
+
     }
 }
