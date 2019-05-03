@@ -7,6 +7,7 @@ use App\KpInstansi;
 use App\KpMahasiswa;
 use App\KpPeserta;
 use App\KpProposal;
+use App\Mahasiswa;
 use DB;
 
 class ProposalKPController extends Controller
@@ -66,7 +67,14 @@ class ProposalKPController extends Controller
                         ->where('kp_proposal.id', '=', $id)
                         ->get();
         $KpProposal = $KpProposal[0];
-        return view('backend.proposal-kp.show', compact('KpProposal'));
+        $anggotas = DB::table('kp_proposal')
+                        ->join('kp_mahasiswa', 'kp_proposal.id', '=', 'kp_mahasiswa.kp_proposal_id')
+                        ->join('kp_peserta', 'kp_mahasiswa.id', '=', 'kp_peserta.kp_mahasiswa_id')
+                        ->join('mahasiswa', 'kp_peserta.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->where('kp_proposal.id', '=', $id)
+                        ->get();
+        // dd($anggotas);
+        return view('backend.proposal-kp.show', compact('KpProposal', 'anggotas'));
     }
 
     /**
@@ -114,5 +122,25 @@ class ProposalKPController extends Controller
         // return redirect()->route('admin.dosen.show', [$user->id]);
         return redirect()->route('admin.proposal-kp.index');
 
+    }
+
+    public function add($id)
+    {
+        $KP = DB::table('kp_proposal')
+                ->join('kp_mahasiswa', 'kp_proposal.id', '=', 'kp_mahasiswa.kp_proposal_id')
+                ->select('kp_mahasiswa.id')
+                ->where('kp_proposal.id', '=', $id)
+                ->get();
+        $KP = $KP[0];
+        $mhs = Mahasiswa::pluck('nama', 'id');
+        return view('backend.proposal-kp.add', compact('mhs', 'KP'));
+    }
+
+    public function insert(Request $request)
+    {
+        $data = $request->all();
+        KpPeserta::create($data);
+        session()->flash('flash_success', 'Berhasil menambahkan data anggota KP');
+        return redirect()->route('admin.proposal-kp.index');
     }
 }
