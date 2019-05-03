@@ -54,10 +54,10 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $kp_proposal->judul }}</td>
                                 <td class="text-center">
-                                    {!! cui_toolbar_btn(route('admin.proposal-kp.add', [$kp_proposal->id]), 'icon-plus') !!}
-                                    {!! cui_btn_view(route('admin.proposal-kp.show', [$kp_proposal->id])) !!}
-                                    {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id])) !!}
-                                    {!! cui_btn_delete(route('admin.proposal-kp.destroy', [$kp_proposal->id]), "Anda yakin akan menghapus data proposal kp ini?") !!}
+                                    {!! cui_btn_view(route('admin.proposal-kp.show', [$kp_proposal->id]), ' Detail') !!}
+                                    {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id]), ' Edit') !!}
+                                    {!! cui_btn_delete(route('admin.proposal-kp.destroy', [$kp_proposal->id]), "Anda yakin akan menghapus data proposal kp ini?", ' Hapus') !!}
+                                    {!! cui_btn_view(route('admin.proposal-kp.showkelompok', [$kp_proposal->id]), ' Kelompok') !!}
                                 </td>
                             </tr>
                         @endforeach

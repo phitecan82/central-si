@@ -9,6 +9,7 @@ use App\KpPeserta;
 use App\KpProposal;
 use App\Mahasiswa;
 use DB;
+Use Exception;
 
 class ProposalKPController extends Controller
 {
@@ -67,14 +68,21 @@ class ProposalKPController extends Controller
                         ->where('kp_proposal.id', '=', $id)
                         ->get();
         $KpProposal = $KpProposal[0];
+        
+        // dd($anggotas);
+        return view('backend.proposal-kp.show', compact('KpProposal'));
+    }
+
+    public function showKelompok($id)
+    {
+        $KpProposal = KpProposal::all()[0];
         $anggotas = DB::table('kp_proposal')
                         ->join('kp_mahasiswa', 'kp_proposal.id', '=', 'kp_mahasiswa.kp_proposal_id')
                         ->join('kp_peserta', 'kp_mahasiswa.id', '=', 'kp_peserta.kp_mahasiswa_id')
                         ->join('mahasiswa', 'kp_peserta.mahasiswa_id', '=', 'mahasiswa.id')
                         ->where('kp_proposal.id', '=', $id)
                         ->get();
-        // dd($anggotas);
-        return view('backend.proposal-kp.show', compact('KpProposal', 'anggotas'));
+        return view('backend.proposal-kp.showKelompok', compact('anggotas', 'KpProposal'));
     }
 
     /**
@@ -116,10 +124,12 @@ class ProposalKPController extends Controller
     public function destroy($id)
     {   
         $proposal = KpProposal::findOrFail($id);
-        $KpProposal = KpProposal::destroy($id);       
-
-        session()->flash('flash_success', 'Berhasil Menghapus data proposal kp dengan judul '.$proposal->judul);
-        // return redirect()->route('admin.dosen.show', [$user->id]);
+        try{
+            KpProposal::destroy($id);
+            session()->flash('flash_success', 'Berhasil Menghapus data proposal kp dengan judul '.$proposal->judul);
+        } catch(Exception $e){
+            session()->flash('flash_warning', 'Gagal Menghapus data proposal kp dengan judul '.$proposal->judul);
+        }
         return redirect()->route('admin.proposal-kp.index');
 
     }
