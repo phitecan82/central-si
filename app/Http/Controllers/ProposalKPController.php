@@ -49,7 +49,6 @@ class ProposalKPController extends Controller
         $data = $request->all();
         KpProposal::create($data);
         session()->flash('flash_success', 'Berhasil menambahkan data proposal kp dengan judul '. $request->input('judul'));
-        // return redirect()->route('admin.dosen.show', [$user->id]);
         return redirect()->route('admin.proposal-kp.index');
     }
 
@@ -78,7 +77,10 @@ class ProposalKPController extends Controller
      */
     public function edit($id)
     {
-        //
+        $KpProposal=KpProposal::findOrFail($id);
+        $instansis = KpInstansi::all();
+        // dd($KpProposal);
+        return view('backend.proposal-kp.edit', compact('KpProposal', 'instansis'));
     }
 
     /**
@@ -90,7 +92,11 @@ class ProposalKPController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $proposal = KpProposal::findOrFail($id);
+        $data = $request->all();
+        $proposal->update($data);
+        session()->flash('flash_success', 'Berhasil mengupdate data proposal kp '.$request->input('judul'));
+        return redirect()->route('admin.proposal-kp.index');
     }
 
     /**
