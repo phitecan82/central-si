@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/proposal-kp/create', 'ProposalKPController@create')->name('admin.proposal-kp.create'); //routing tampilkan form data proposal kp baru
     Route::patch('/admin/proposal-kp/{id}', 'ProposalKPController@update')->name('admin.proposal-kp.update'); //routing simpan perubahan data proposal kp
     Route::delete('/admin/proposal-kp/{id}', 'ProposalKPController@destroy')->name('admin.proposal-kp.destroy'); //routing hapus data proposal kp
+    Route::delete('/admin/proposal-kp/{id}/delanggota', 'ProposalKPController@hapusAnggota')->name('admin.proposal-kp.hapusanggota'); //routing hapus data proposal kp
     Route::get('/admin/proposal-kp/{id}', 'ProposalKPController@show')->name('admin.proposal-kp.show'); //routing tampilkan detail proposal kp
     Route::get('/admin/proposal-kp/{id}/show', 'ProposalKPController@showKelompok')->name('admin.proposal-kp.showkelompok'); //routing tampilkan detail proposal kp
     Route::get('/admin/proposal-kp/{id}/edit', 'ProposalKPController@edit')->name('admin.proposal-kp.edit');  //routing tampilkan form edit proposal kp

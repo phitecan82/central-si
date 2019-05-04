@@ -75,13 +75,15 @@ class ProposalKPController extends Controller
 
     public function showKelompok($id)
     {
-        $KpProposal = KpProposal::all()[0];
+        $KpProposal = KpProposal::findOrFail($id);
         $anggotas = DB::table('kp_proposal')
                         ->join('kp_mahasiswa', 'kp_proposal.id', '=', 'kp_mahasiswa.kp_proposal_id')
                         ->join('kp_peserta', 'kp_mahasiswa.id', '=', 'kp_peserta.kp_mahasiswa_id')
                         ->join('mahasiswa', 'kp_peserta.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->select('kp_peserta.id', 'mahasiswa.nama', 'kp_peserta.mahasiswa_id')
                         ->where('kp_proposal.id', '=', $id)
                         ->get();
+        // dd($anggotas);
         return view('backend.proposal-kp.showKelompok', compact('anggotas', 'KpProposal'));
     }
 
@@ -151,6 +153,17 @@ class ProposalKPController extends Controller
         $data = $request->all();
         KpPeserta::create($data);
         session()->flash('flash_success', 'Berhasil menambahkan data anggota KP');
+        return redirect()->route('admin.proposal-kp.index');
+    }
+
+    public function hapusAnggota($id)
+    {
+        try{
+            KpPeserta::destroy($id);
+            session()->flash('flash_success', 'Berhasil Menghapus data anggota kp');
+        } catch(Exception $e){
+            session()->flash('flash_warning', 'Gagal Menghapus data anggota kp');
+        }
         return redirect()->route('admin.proposal-kp.index');
     }
 }

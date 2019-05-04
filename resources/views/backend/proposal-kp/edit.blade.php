@@ -69,8 +69,18 @@
                     <div class="form-group">
                         <label for="status_proposal">Status Proposal</label>
                         <select name="status_proposal" id="status_proposal" class="form-control" required>
-                            <option value="0">Tidak Disetujui</option>
-                            <option value="1">Disetujui</option>
+                            <option value="0"
+                                @if($KpProposal->status_proposal==0) 
+                                    selected='selected'
+                                @endif
+                                >Tidak Disetujui
+                            </option>
+                            <option value="1"
+                                @if($KpProposal->status_proposal==1) 
+                                    selected='selected'
+                                @endif
+                                >Disetujui
+                            </option>
                         </select>
                     </div>
 
