@@ -38,27 +38,15 @@
                 </ul>
             </li>
 
-            <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#">
-                    <i class="nav-icon icon-doc"></i> Pengelolaan KP</a>
-                <ul class="nav-dropdown-items">
 
                     {{-- Menu Proposal KP--}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.proposal-kp.index') }}">
-                            <i class="nav-icon fas fa-minus"></i> Proposal KP
+                            <i class="nav-icon icon-doc"></i> Proposal KP
                         </a>
                     </li>
 
-                    {{-- Menu Kelompok KP--}}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="nav-icon fas fa-minus"></i> Kelompok KP
-                        </a>
-                    </li>
 
-                </ul>
-            </li>
 
             <li class="nav-item nav-dropdown">
 
