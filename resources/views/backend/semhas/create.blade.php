@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.semhas.store', 'method' => 'post']) }}
+                {{ Form::open(['route' => 'admin.semhas.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
 
                 {{-- CARD HEADER --}}
                 <div class="card-header">

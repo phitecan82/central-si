@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="semhas_at">Tanggal</label>
-    {{ Form::input('date','tanggal', null, ['class' => 'form-control', 'id' => 'tanggal', 'placeholder' => 'Tanggal Semhas']) }}
+    {{ Form::input('date','semhas_at', null, ['class' => 'form-control', 'id' => 'semhas_at', 'placeholder' => 'Tanggal Semhas']) }}
 </div>
 
 <div class="form-group">
@@ -11,16 +11,6 @@
 <div class="form-group">
     <label for="ruangan_id">Ruangan</label>
     {{ Form::select('ruangan_id', $ruangan, null, ['class' => 'form-control', 'id' => 'nama', 'placeholder' => 'Ruangan']) }}
-</div>
-
-<div class="form-group">
-    <label for="status">Status</label>
-    {{ Form::text('status', null, ['class' => 'form-control', 'id' => 'status', 'placeholder' => 'Status']) }}
-</div>
-
-<div class="form-group">
-    <label for="rekomendasi">Rekomendasi</label>
-    {{ Form::text('rekomendasi', null, ['class' => 'form-control', 'id' => 'rekomendasi', 'placeholder' => 'Rekomendasi']) }}
 </div>
 
 <div class="form-group">
