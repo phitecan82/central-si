@@ -10,4 +10,8 @@ class TaSemhas extends Model
     protected $guarded = [];
 
     // Tambahkan Kode yang diperlukan dibawah ini
+    public function pesertas()
+    {
+        return $this->hasMany(TaPesertaSemhas::class);
+    }
 }
