@@ -1,4 +1,9 @@
 <div class="form-group">
+    <label for="ta_sempro_id">Status Proposal</label>
+    {{ Form::select('ta_sempro_id', $sempro, null, ['class' => 'form-control', 'id' => 'proposal_status', 'placeholder' => 'Status Proposal']) }}
+</div>
+
+<div class="form-group">
     <label for="semhas_at">Tanggal</label>
     {{ Form::input('date','semhas_at', null, ['class' => 'form-control', 'id' => 'semhas_at', 'placeholder' => 'Tanggal Semhas']) }}
 </div>
@@ -11,6 +16,16 @@
 <div class="form-group">
     <label for="ruangan_id">Ruangan</label>
     {{ Form::select('ruangan_id', $ruangan, null, ['class' => 'form-control', 'id' => 'nama', 'placeholder' => 'Ruangan']) }}
+</div>
+
+<div class="form-group">
+    <label for="status">Status</label>
+    {{ Form::text('status', null, ['class' => 'form-control', 'id' => 'status', 'placeholder' => 'Status']) }}
+</div>
+
+<div class="form-group">
+    <label for="rekomendasi">Rekomendasi</label>
+    {{ Form::text('rekomendasi', null, ['class' => 'form-control', 'id' => 'rekomendasi', 'placeholder' => 'Rekomendasi']) }}
 </div>
 
 <div class="form-group">
