@@ -72,4 +72,8 @@ class SemhasController extends Controller
             return redirect()->route('admin.semhas.show',[$semhas->id]);
     }
     
+    public function show()
+    {
+        
+    }
 }
