@@ -21,13 +21,13 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>Daftar Anggota Kelompok Proposal KP {{ $KpProposal->judul }}</strong>
+                    <strong>Daftar Anggota Kelompok Proposal KP "{{ $KpProposal->judul }}"</strong>
                 </div>
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
                     
-                <table class="table table-striped table-bordered table-hover">
+                <table class="table table-striped table-hover">
                         <thead>
                         <tr>
                             <th class="text-center">No</th>
