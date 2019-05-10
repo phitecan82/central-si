@@ -10,8 +10,8 @@
 
 @section('toolbar')
     {!! cui_toolbar_btn_delete(route('admin.proposal-kp.destroy', [$KpProposal->id]), $KpProposal->id, 'icon-trash', 'Hapus Proposal KP', 'Anda yakin akan menghapus Proposal ini?') !!}
+    {!! cui_toolbar_btn(route('admin.proposal-kp.edit', [$KpProposal->id]), 'icon-pencil', 'Edit Proposal KP') !!}
     {!! cui_toolbar_btn(route('admin.proposal-kp.index'), 'icon-list', 'List Proposal KP') !!}
-    {!! cui_toolbar_btn(route('admin.proposal-kp.create'), 'icon-plus', 'Tambah Proposal KP') !!}
 @endsection
 
 @section('content')

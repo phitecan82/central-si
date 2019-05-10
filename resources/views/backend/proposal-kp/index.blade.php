@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                    <table class="table table-striped table-bordered table-hover" id="tabelProposalKP">
+                    <table class="table table-striped table-hover mt-4" id="tabelProposalKP">
                         <thead>
                         <tr>
                             <th class="text-center">No</th>
@@ -51,13 +51,13 @@
                         <tbody>
                         @foreach($kp_proposals as $kp_proposal)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td class="text-center">{{ $loop->iteration }}</td>
                                 <td>{{ $kp_proposal->judul }}</td>
                                 <td class="text-center">
-                                    {!! cui_btn_view(route('admin.proposal-kp.show', [$kp_proposal->id]), ' Detail') !!}
-                                    {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id]), ' Edit') !!}
-                                    {!! cui_btn_delete(route('admin.proposal-kp.destroy', [$kp_proposal->id]), "Anda yakin akan menghapus data proposal kp ini?", ' Hapus') !!}
-                                    {!! cui_btn_view(route('admin.proposal-kp.showkelompok', [$kp_proposal->id]), ' Kelompok') !!}
+                                    {!! cui_btn_view(route('admin.proposal-kp.show', [$kp_proposal->id])) !!}
+                                    {!! cui_btn_edit(route('admin.proposal-kp.edit', [$kp_proposal->id])) !!}
+                                    {!! cui_btn_delete(route('admin.proposal-kp.destroy', [$kp_proposal->id]), "Anda yakin akan menghapus data proposal kp ini?") !!}
+                                    <a href="{{ route('admin.proposal-kp.showkelompok', [$kp_proposal->id]) }}" class="btn btn-outline-primary btn-sm"><b>☰</b></a>
                                 </td>
                             </tr>
                         @endforeach

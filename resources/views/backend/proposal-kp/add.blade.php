@@ -21,19 +21,28 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>Tambah Anggota KP</strong>
+                    <strong>Tambah Anggota KP "{{ $KP->judul }}"</strong>
                 </div>
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
 
-                    <input type="hidden" name="kp_mahasiswa_id" value="{{ $KP->id }}">
+                    <input type="hidden" name="kp_proposal_id" value="{{ $KP->id }}">
 
                     <div class="form-group">
-                        <label for="mahasiswa_id">Mahasiswa</label>
+                        <label for="mahasiswa_id">Mahasiswa*</label>
                         {!! Form::select('mahasiswa_id', $mhs, null, ['class' => 'form-control', 'id' => 'mahasiswa_id', 'required' => 'required']) !!}
                     </div>
 
+                    <div class="form-group">
+                        <label for="bidang_usulan">Bidang Usulan*</label>
+                        {{ Form::text('bidang_usulan', null, ['class' => 'form-control', 'id' => 'bidang_usulan', 'placeholder' => 'Bidang Usulan']) }}
+                    </div>
+
+                    <div class="form-group">
+                        <label for="judul_laporan">Judul Laporan*</label>
+                        {{ Form::text('judul_laporan', null, ['class' => 'form-control', 'id' => 'judul_laporan', 'placeholder' => 'Judul Laporan']) }}
+                    </div>
                 </div>
 
                 {{--CARD FOOTER--}}
