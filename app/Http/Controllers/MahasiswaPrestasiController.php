@@ -18,7 +18,10 @@ class MahasiswaPrestasiController extends Controller
 
     public function index()
     {
-        //
+        $prestasis = MahasiswaPrestasi::
+                        join('mahasiswa', 'mahasiswa_prestasi.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->paginate(25);
+        return view('backend.prestasi-mhs.index', compact('prestasis'));
     }
 
     public function create()
