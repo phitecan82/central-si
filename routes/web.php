@@ -28,6 +28,15 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/dosen/{dosen}', 'DosenController@show')->name('admin.dosen.show'); //routing tampilkan detail dosen
     Route::get('/admin/dosen/{dosen}/edit', 'DosenController@edit')->name('admin.dosen.edit');  //routing tampilkan form edit dosen
 
+    /** Routing Prestasi Mahasiswa */
+    Route::get('/admin/prestasi-mhs', 'MahasiswaPrestasiController@index')->name('admin.prestasi-mhs.index');
+    Route::post('/admin/prestasi-mhs', 'MahasiswaPrestasiController@store')->name('admin.prestasi-mhs.store');
+    Route::get('/admin/prestasi-mhs/create', 'MahasiswaPrestasiController@create')->name('admin.prestasi-mhs.create');
+    Route::delete('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@destroy')->name('admin.prestasi-mhs.destroy');
+    Route::patch('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@update')->name('admin.prestasi-mhs.update');
+    Route::get('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@show')->name('admin.prestasi-mhs.show');
+    Route::get('/admin/prestasi-mhs/{id}/edit', 'MahasiswaPrestasiController@edit')->name('admin.prestasi-mhs.edit');
+
 
     /** Routing Pengelolaan Mahasiswa */
     Route::post('/admin/mahasiswa/cari', 'MahasiswaCariController@show')->name('admin.mahasiswacari.show'); //routing pencarian mahasiswa
