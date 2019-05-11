@@ -26,7 +26,8 @@ class MahasiswaPrestasiController extends Controller
 
     public function create()
     {
-        //
+        $mahasiswas = Mahasiswa::pluck('nama', 'id');
+        return view('backend.prestasi-mhs.create', compact('mahasiswas'));
     }
 
     public function store(Request $request)
