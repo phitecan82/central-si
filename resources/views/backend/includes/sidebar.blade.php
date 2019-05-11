@@ -64,6 +64,12 @@
                 </ul>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.prestasi-mhs.index') }}">
+                    <i class="nav-icon fas fa-minus"></i> Prestasi Mahasiswa
+                </a>
+            </li>
+
         </ul>
     </nav>
 
