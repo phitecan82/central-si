@@ -20,6 +20,7 @@ class MahasiswaPrestasiController extends Controller
     {
         $prestasis = MahasiswaPrestasi::
                         join('mahasiswa', 'mahasiswa_prestasi.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->orderBy('mahasiswa_prestasi.created_at', 'desc')
                         ->paginate(25);
         return view('backend.prestasi-mhs.index', compact('prestasis'));
     }
@@ -32,7 +33,11 @@ class MahasiswaPrestasiController extends Controller
 
     public function store(Request $request)
     {
-        //
+        $this->validate($request, $this->validation_rules);
+        $data = $request->all();
+        MahasiswaPrestasi::create($data);
+        session()->flash('flash_success', 'Berhasil menambahkan data prestasi '.$request->nama_lomba);
+        return redirect()->route('admin.prestasi-mhs.index');
     }
 
     public function show($id)

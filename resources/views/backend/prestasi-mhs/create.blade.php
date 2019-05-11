@@ -43,7 +43,8 @@
 
                     <div class="form-group">
                         <label for="tingkat">Tingkat</label>
-                        <select name="tingkat" id="tingkat" class="form-control" required>
+                        <select name="tingkat" id="tingkat" class="form-control">
+                            <option value="">Pilih Tingkat Prestasi</option>
                             <option value="0">Kab/Kota</option>
                             <option value="1">Provinsi</option>
                             <option value="2">Regional</option>
