@@ -73,7 +73,6 @@ class ProposalKPController extends Controller
                         ->select('kp_mahasiswa.id', 'mahasiswa.nama', 'kp_mahasiswa.mahasiswa_id')
                         ->where('kp_proposal.id', '=', $id)
                         ->get();
-        // dd($anggotas);
         return view('backend.proposal-kp.showKelompok', compact('anggotas', 'KpProposal'));
     }
 
@@ -86,6 +85,7 @@ class ProposalKPController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, $this->proposal_validation_rules);
         $proposal = KpProposal::findOrFail($id);
         $data = $request->all();
         $proposal->update($data);
