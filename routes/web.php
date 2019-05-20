@@ -50,6 +50,11 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/semhas/{semhas}', 'SemhasController@show')->name('admin.semhas.show'); //routing tampilkan detail semhas
     Route::get('/admin/semhas/{semhas}/edit', 'SemhasController@edit')->name('admin.semhas.edit');  //routing tampilkan form edit semhas
 
+    Route::get('/admin/pesertasemhas/create', 'PesertaSemhasController@create')->name('admin.pesertasemhas.create'); //routing tampilkan form data semhas 
+    Route::get('/admin/pesertasemhas/{id}', 'PesertaSemhasController@index')->name('admin.pesertasemhas.index');  //routing lihat daftar pesertasemhas
+    Route::post('/admin/pesertasemhas', 'PesertaSemhasController@store')->name('admin.pesertasemhas.store'); //routing simpan data pesertasemhas
+    Route::delete('/admin/pesertasemhas/{id}', 'PesertaSemhasController@destroy')->name('admin.pesertasemhas.destroy'); //routing hapus data pesertasemhas 
+
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 

@@ -9,7 +9,7 @@
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.semhas.create'), 'icon-plus', 'Tambah Data Semhas') !!}
+{!! cui_toolbar_btn(route('admin.pesertasemhas.create'), 'icon-plus', 'Tambah Peserta Semhas') !!}  
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    List Semhas
+                    List Peserta Semhas
                 </div>
 
                 {{-- CARD BODY--}}
@@ -32,6 +32,7 @@
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
                                 {{ $semhass->links() }}
+                            
                             </div>
                         </div>
                     </div>
@@ -39,30 +40,25 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Tanggal</th>
-                            <th class="text-center">Jam</th>
-                            <th class="text-center">Ruangan</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Nim</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($semhass as $semhas)
+                        @forelse($semhass as $peserta)
                             <tr>
-                                <td class="text-center">{{ $semhas->semhas_at }}</td>
-                                <td class="text-center">{{ $semhas->semhas_time }}</td>
-                                <td class="text-center">{{ $semhas->nama }}</td>
+                                <td class="text-center">{{ $peserta->nama }}</td>
+                                <td class="text-center">{{ $peserta->nim }}</td>
                                 <td class="text-center">
-                                    {!! cui_btn_view(route('admin.semhas.show', [$semhas->id])) !!}
-                                    {!! cui_btn_edit(route('admin.semhas.edit', [$semhas->id])) !!}
-                                    {!! cui_btn_delete(route('admin.semhas.destroy', [$semhas->id]), "Anda yakin akan menghapus data semhas ini?") !!}
-                                    {!! cui_btn(route('admin.pesertasemhas.index', [$semhas->id]), 'icon-people','Peserta') !!}
-                                
+                                {!! cui_btn_delete(route('admin.pesertasemhas.destroy', [$peserta->id]), "Anda yakin akan menghapus data semhas ini?") !!}
+          
                                 </td>
                             </tr>
                         @empty
                         <tr>
                             <td colspan="4" class="text-center">
-                                Data semhas belum ada
+                                Peserta semhas belum ada
                             </td>
                         </tr>
 
