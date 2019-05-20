@@ -22,7 +22,13 @@ class SemhasController extends Controller
     public function create()
     {
     	$ruangan = Ruangan::all()->pluck('nama','id');
-        $sempro = TaSempro::all()->pluck('proposal_status','id');
+        // $sempro = TaSempro::all()->pluck('proposal_status','id');
+        $sempro = DB::table('ta_semhas')
+                  ->join('ta_sempro', 'ta_semhas.ta_sempro_id', '=' , 'ta_sempro.id')
+                  ->join('tugas_akhir','ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
+                  ->join('mahasiswa', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
+                  ->select('ta_sempro.id','mahasiswa.nama')
+                  ->pluck('mahasiswa.nama','ta_semhas.id');
         return view('backend.semhas.create', compact('ruangan','sempro'));
     }
 
@@ -30,6 +36,7 @@ class SemhasController extends Controller
     {
 
     	$request->validate([
+            'ta_sempro_id'=>'required',
             'semhas_at' => 'required',
             'semhas_time' => 'required',
             'ruangan_id' => 'required',

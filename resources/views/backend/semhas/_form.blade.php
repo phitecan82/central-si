@@ -1,6 +1,6 @@
 <div class="form-group">
-    <label for="ta_sempro_id">Status Proposal</label>
-    {{ Form::select('ta_sempro_id', $sempro, null, ['class' => 'form-control', 'id' => 'proposal_status', 'placeholder' => 'Status Proposal']) }}
+    <label for="ta_sempro_id">Nama Mahasiswa</label>
+    {{ Form::select('ta_sempro_id', $sempro, null, ['class' => 'form-control', 'readonly' =>'true', 'id' => 'nama', 'placeholder' => 'Nama Mahasiswa']) }}
 </div>
 
 <div class="form-group">
