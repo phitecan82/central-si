@@ -63,7 +63,11 @@
                     </li>
                 </ul>
             </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.semhas.index') }}">
+                            <i class="nav-icon fas fa-graduation-cap"></i> Pengelolaan Semhas
+                        </a>
+                    </li>
         </ul>
     </nav>
 

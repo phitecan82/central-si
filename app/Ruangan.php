@@ -11,4 +11,8 @@ class Ruangan extends Model
     public $timestamps = false;
 
     // Tambahkan Kode yang diperlukan dibawah ini
+    public function ruangans()
+    {
+        return $this->hasMany(TaSemhas::class);
+    }
 }
