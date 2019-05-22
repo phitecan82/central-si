@@ -25,25 +25,29 @@ class PesertaSemhasController extends Controller
                    ->select('ta_peserta_semhas.id','mahasiswa.nim','mahasiswa.nama','ta_peserta_semhas.mahasiswa_id')
                    ->where('ta_semhas.id','=',$id)
                    ->paginate(25);
-        return view('backend.pesertasemhas.index', compact('semhass'));
+        return view('backend.pesertasemhas.index', compact('semhass', 'id'));
     }
-    public function create()
+    public function create($id)
     {
-        $tes=TaPesertaSemhas::all()->pluck('ta_semhas_id');
         $mahasiswas = Mahasiswa::all()->pluck('nama','id');
-    	return view('backend.pesertasemhas.create',compact('mahasiswas','tes'));
+    	return view('backend.pesertasemhas.create',compact('mahasiswas','id'));
     }
     public  function store(Request $request)
     {
+    
+
     	$request->validate([
             'ta_semhas_id'=>'required',
-            'mahasiswa_id' => 'required'
+            'mahasiswa_id' => 'required' 
         ]);
+
     		$pesertas = new TaPesertaSemhas();
             $pesertas->ta_semhas_id = $request->input('ta_semhas_id');
-    		$pesertas->mahasiswa_id = $request->input('mahasiswa_id');
-    		$pesertas->save();
-            return redirect()->route('admin.semhas.show',[$pesertas->id]);
+            $pesertas->mahasiswa_id = $request->input('mahasiswa_id');
+            $pesertas->save();
+            
+            return redirect()->route('admin.pesertasemhas.index',[$pesertas->ta_semhas_id]);
+            
     }
     public function destroy($id)
     {
@@ -52,5 +56,6 @@ class PesertaSemhasController extends Controller
         session()->flash('flash_success', 'Berhasil menghapus data peserta');
         return redirect()->route('admin.pesertasemhas.index',[$peserta->ta_semhas_id]);
     } 
+   
 
 }

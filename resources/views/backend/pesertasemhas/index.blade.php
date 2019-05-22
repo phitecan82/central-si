@@ -9,7 +9,7 @@
 @endsection
 
 @section('toolbar')
-{!! cui_toolbar_btn(route('admin.pesertasemhas.create'), 'icon-plus', 'Tambah Peserta Semhas') !!}  
+{!! cui_toolbar_btn(route('admin.pesertasemhas.create', [$id]), 'icon-plus', 'Tambah Peserta Semhas') !!}  
 @endsection
 
 @section('content')
@@ -51,7 +51,7 @@
                                 <td class="text-center">{{ $peserta->nama }}</td>
                                 <td class="text-center">{{ $peserta->nim }}</td>
                                 <td class="text-center">
-                                {!! cui_btn_delete(route('admin.pesertasemhas.destroy', [$peserta->id]), "Anda yakin akan menghapus data semhas ini?") !!}
+                                {!! cui_btn_delete(route('admin.pesertasemhas.destroy', [$peserta->id]), "Anda yakin akan menghapus data peserta semhas ini?") !!}
           
                                 </td>
                             </tr>

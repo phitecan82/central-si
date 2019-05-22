@@ -4,19 +4,19 @@
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
         'Semhas' => route('admin.semhas.index'),
-        'Edit' => '#'
+        'Tambah' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.semhas.index'), 'icon-list', 'List Semhas') !!}
+    {!! cui_toolbar_btn(route('admin.pesertasemhas.index',[$id]), 'icon-list', 'List Peserta Semhas') !!}
 @endsection
 
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-
+                
                 {{ Form::open(['route' => 'admin.pesertasemhas.store', 'method' => 'post']) }}
 
                 {{-- CARD HEADER --}}
