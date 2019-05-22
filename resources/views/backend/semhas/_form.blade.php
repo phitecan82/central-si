@@ -19,18 +19,15 @@
 </div>
 
 <div class="form-group">
-    <label for="status">Status</label>
-    {{ Form::text('status', null, ['class' => 'form-control', 'id' => 'status', 'placeholder' => 'Status']) }}
+    {{ Form::hidden('status', null, ['class' => 'form-control', 'id' => 'status', 'placeholder' => 'Status']) }}
 </div>
 
 <div class="form-group">
-    <label for="rekomendasi">Rekomendasi</label>
-    {{ Form::text('rekomendasi', null, ['class' => 'form-control', 'id' => 'rekomendasi', 'placeholder' => 'Rekomendasi']) }}
+    {{ Form::hidden('rekomendasi', null, ['class' => 'form-control', 'id' => 'rekomendasi', 'placeholder' => 'Rekomendasi']) }}
 </div>
 
 <div class="form-group">
-    <label for="sidang_deadline_at">Tenggat Waktu Sidang</label>
-    {{ Form::input('date','sidang_deadline_at', null, ['class' => 'form-control', 'id' => 'sidang_deadline_at', 'placeholder' => 'Tenggat Waktu Sidang']) }}
+    {{ Form::hidden('date','sidang_deadline_at', null, ['class' => 'form-control', 'id' => 'sidang_deadline_at', 'placeholder' => 'Tenggat Waktu Sidang']) }}
 </div>
 
 <div class="form-group">

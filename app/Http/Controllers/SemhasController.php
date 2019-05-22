@@ -39,7 +39,6 @@ class SemhasController extends Controller
             'semhas_at' => 'required',
             'semhas_time' => 'required',
             'ruangan_id' => 'required',
-            'sidang_deadline_at' => 'required',
     		'file_ba_seminar' => 'file|mimes:pdf',
     		'file_laporan_ta' => 'file|mimes:pdf'
         ]);
