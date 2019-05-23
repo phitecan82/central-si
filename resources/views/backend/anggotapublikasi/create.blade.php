@@ -9,7 +9,7 @@
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.publikasi.index'), 'icon-list', 'Daftar Publikasi') !!}
+    {!! cui_toolbar_btn(route('admin.publikasi.index'), 'icon-list', 'Daftar Anggota') !!}
 @endsection
 
 @section('content')
@@ -17,16 +17,16 @@
         <div class="col">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.publikasi.store', 'method' => 'post', 'files' => 'true']) }}
+                {{ Form::open(['route' => 'admin.anggotapublikasi.store', 'method' => 'post']) }}
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    Tambah Publikasi
+                    Tambah Anggota
                 </div>
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
-                    @include('backend.publikasi._form')
+                    @include('backend.anggotapublikasi._form')
                 </div>
 
                 {{--CARD FOOTER--}}

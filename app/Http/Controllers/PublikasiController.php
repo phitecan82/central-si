@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Publikasi;
 class PublikasiController extends Controller
@@ -11,12 +9,10 @@ class PublikasiController extends Controller
     	$publikasis = Publikasi::paginate(25);
         return view('backend.publikasi.index', compact('publikasis'));
     }
-
     public function create()
     {
     	return view('backend.publikasi.create');
     }
-
     public function store(Request $request)
     {
     	$request -> validate([
@@ -29,7 +25,6 @@ class PublikasiController extends Controller
     		'publish' => 'file|mimes:pdf',
     		'url' => 'required'
     	]);
-
     	$publikasi = new Publikasi();
     	$publikasi->judul = $request->input('judul');
     	$publikasi->tahun = $request->input('tahun');   
@@ -43,22 +38,18 @@ class PublikasiController extends Controller
     		$filename = uniqid('Artikel-');
     		$fileext = $request->file('file_artikel')->extension();
     		$filenameext = $filename.'.'.$fileext;
-
     		$filepath = $request->file_artikel->storeAs('publikasi_artikel', $filenameext);
     		$publikasi->file_artikel = $filepath;
     	}
-
     	if($request->file('publisher')->isValid())
     	{
     		$filename = uniqid('Publisher-');
     		$fileext = $request->file('publisher')->extension();
     		$filenameext = $filename.'.'.$fileext;
-
     		$filepath = $request->publisher->storeAs('publikasi_publisher', $filenameext);
     		$publikasi->publisher = $filepath;
     	}
-    	$publikasi->save();
-
+    	$publikasi->save(s);
     	return redirect()->route('admin.publikasi.index', [$publikasi]);
     }
     public function edit(Publikasi $publikasi)
