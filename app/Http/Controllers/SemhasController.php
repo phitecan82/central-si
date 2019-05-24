@@ -65,7 +65,7 @@ class SemhasController extends Controller
     		$semhas->ruangan_id = $request->input('ruangan_id');
             $semhas->status = $request->input('status');
             $semhas->rekomendasi = $request->input('rekomendasi');
-    	    $semhas->sidang_deadline_at = $request->input('sidang_deadine_at');
+    	    $semhas->sidang_deadline_at = $request->input('sidang_deadline_at');
 
     		if($request->file('file_ba_seminar')->isValid())
     		{
