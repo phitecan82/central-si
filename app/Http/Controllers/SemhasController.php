@@ -36,11 +36,7 @@ class SemhasController extends Controller
                     ->select('rekomendasi', DB::raw('(CASE WHEN rekomendasi = 1 THEN '. "'Mengulang Seminar'" .'WHEN rekomendasi = 2 THEN '. "'Lanjut Sidang dengan Revisi'".'WHEN rekomendasi = 3 THEN '."'Lanjut Sidang Tanpa Revisi'".'END) AS rekomendasi_semhas'))
                     ->distinct()
                     ->pluck('rekomendasi_semhas','rekomendasi');
-        $status = DB::table('ta_semhas')
-                    ->select('status', DB::raw('(CASE WHEN status = 1 THEN '. "'Sudah terlaksana'" .'WHEN status = 2 THEN '. "'Dalam pengajuan'".'WHEN status = 3 THEN '."'Dibatalkan'".'END) AS status_semhas'))
-                    ->distinct()
-                    ->pluck('status_semhas','status');
-        return view('backend.semhas.create', compact('ruangan','mahasiswa','rekomendasi','status'));
+        return view('backend.semhas.create', compact('ruangan','mahasiswa','rekomendasi'));
     }
 
     public function store(Request $request)

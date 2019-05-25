@@ -19,8 +19,7 @@
 </div>
 
 <div class="form-group">
-    <label for="status">Status</label>
-    {{ Form::select('status', $status, null, ['class' => 'form-control', 'id' => 'status']) }}
+    {{ Form::hidden('status', '1', null, ['class' => 'form-control', 'id' => 'status']) }}
 </div>
 
 <div class="form-group">
