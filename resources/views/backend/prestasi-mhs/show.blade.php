@@ -11,7 +11,7 @@
 @section('toolbar')
     {!! cui_toolbar_btn_delete(route('admin.prestasi-mhs.destroy', [$prestasi->id]), $prestasi->id, 'icon-trash', 'Hapus Prestasi', 'Anda yakin akan menghapus data prestasi mahasiswa ini?') !!}
     {!! cui_toolbar_btn(route('admin.prestasi-mhs.index'), 'icon-list', 'List Prestasi') !!}
-    {!! cui_toolbar_btn(route('admin.prestasi-mhs.edit'), 'icon-edit', 'Edit Prestasi') !!}
+    {!! cui_toolbar_btn(route('admin.prestasi-mhs.edit', [$prestasi->id]), 'icon-pencil', 'Edit Prestasi') !!}
 @endsection
 
 @section('content')
@@ -71,8 +71,13 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="download"><strong>File Sertifikat</strong></label>
-                        <a href="">Download</a>
+                        <label for="download"><strong>File Sertifikat</strong></label><br>
+                        @if($prestasi->sertifikat != null)
+                            <a href="{{ route('storage.prestasi-mhs.sertifikat', [$prestasi->sertifikat]) }}"  target="_blank">Lihat File</a> | 
+                            <a href="{{ route('storage.prestasi-mhs.sertifikat', [$prestasi->sertifikat]) }}"  target="_blank" download>Download File</a>
+                        @else
+                            <i>File sertifikat belum diupload!</i>
+                        @endif
                     </div>
 
 

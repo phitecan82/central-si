@@ -20,6 +20,7 @@ class MahasiswaPrestasiController extends Controller
     {
         $prestasis = MahasiswaPrestasi::
                         join('mahasiswa', 'mahasiswa_prestasi.mahasiswa_id', '=', 'mahasiswa.id')
+                        ->select('mahasiswa_prestasi.id', 'mahasiswa.nama', 'mahasiswa_prestasi.nama_lomba', 'mahasiswa_prestasi.prestasi')
                         ->orderBy('mahasiswa_prestasi.created_at', 'desc')
                         ->paginate(25);
         return view('backend.prestasi-mhs.index', compact('prestasis'));
@@ -49,7 +50,18 @@ class MahasiswaPrestasiController extends Controller
 
     public function show($id)
     {
-        //
+        $prestasi = MahasiswaPrestasi::
+                    join('mahasiswa', 'mahasiswa.id', '=', 'mahasiswa_prestasi.mahasiswa_id')
+                    ->select('mahasiswa_prestasi.id', 'mahasiswa.nama', 'mahasiswa_prestasi.nama_lomba', 'mahasiswa_prestasi.prestasi', 'mahasiswa_prestasi.penyelenggara', 'mahasiswa_prestasi.tempat', 'mahasiswa_prestasi.tgl_mulai', 'mahasiswa_prestasi.tgl_selesai', 'mahasiswa_prestasi.sertifikat', 
+                    DB::raw('(CASE 
+                    WHEN mahasiswa_prestasi.tingkat = "0" THEN "Kab/Kota" 
+                    WHEN mahasiswa_prestasi.tingkat = "1" THEN "Provinsi" 
+                    WHEN mahasiswa_prestasi.tingkat = "2" THEN "Regional" 
+                    WHEN mahasiswa_prestasi.tingkat = "3" THEN "Nasional" 
+                    WHEN mahasiswa_prestasi.tingkat = "4" THEN "Internasional" 
+                    ELSE "" END) AS tingkat'))
+                    ->findOrFail($id);
+        return view('backend.prestasi-mhs.show', compact('prestasi'));
     }
 
     public function edit($id)

@@ -3,7 +3,7 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Dosen' => route('admin.prestasi-mhs.index'),
+        'Prestasi' => route('admin.prestasi-mhs.index'),
         'Index' => '#'
     ]) !!}
 @endsection
@@ -48,8 +48,8 @@
                         @foreach($prestasis as $prestasi)
                             <tr>
                                 <td>{{ $prestasi->nama }}</td>
-                                <td class="text-center">{{ $prestasi->nama_lomba }}</td>
-                                <td class="text-center">{{ $prestasi->prestasi }}</td>
+                                <td>{{ $prestasi->nama_lomba }}</td>
+                                <td>{{ $prestasi->prestasi }}</td>
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.prestasi-mhs.show', [$prestasi->id])) !!}
                                     {!! cui_btn_edit(route('admin.prestasi-mhs.edit', [$prestasi->id])) !!}

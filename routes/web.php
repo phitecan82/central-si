@@ -67,7 +67,7 @@ Route::middleware(['auth'])->group( function(){
         $response->header("Content-Type", $type);
 
         return $response;
-    });
+    })->name('storage.prestasi-mhs.sertifikat');
 });
 
 Route::get('/', function () {
