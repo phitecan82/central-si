@@ -5,12 +5,12 @@
 
 <div class="form-group">
     <label for="semhas_at">Tanggal</label>
-    {{ Form::input('date','semhas_at', null, ['class' => 'form-control', 'id' => 'semhas_at', 'placeholder' => 'Tanggal Semhas']) }}
+    {{ Form::input('date','semhas_at', null, ['class' => 'form-control', 'id' => 'semhas_at']) }}
 </div>
 
 <div class="form-group">
     <label for="semhas_time">Jam</label>
-    {{ Form::input('time','semhas_time', null, ['class' => 'form-control', 'id' => 'nim', 'placeholder' => 'NIM Mahasiswa']) }}
+    {{ Form::input('time','semhas_time', null, ['class' => 'form-control', 'id' => 'jam']) }}
 </div>
 
 <div class="form-group">
@@ -30,7 +30,7 @@
 
 <div class="form-group">
     <label for="sidang_deadline_at">Tenggat Waktu Sidang</label>
-    {{ Form::input('date','sidang_deadline_at', null, ['class' => 'form-control', 'id' => 'sidang_deadline_at', 'placeholder' => 'Tenggat Waktu Sidang']) }}
+    {{ Form::input('date','sidang_deadline_at', null, ['class' => 'form-control', 'id' => 'sidang_deadline_at']) }}
 </div>
 
 <div class="form-group">
