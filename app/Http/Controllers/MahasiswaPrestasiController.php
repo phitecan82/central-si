@@ -34,7 +34,14 @@ class MahasiswaPrestasiController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, $this->validation_rules);
-        $data = $request->all();
+        $file = $request->file('sertifikat');
+        $data = $request->except('sertifikat');
+        if($file){
+            $fileName = sha1(microtime()) . '.' . $file->getClientOriginalExtension();
+            $destinationPath = $file->storeAs('storage/prestasi', $fileName);
+            $file->move($destinationPath, $fileName);
+            $data['sertifikat'] = $fileName;
+        }        
         MahasiswaPrestasi::create($data);
         session()->flash('flash_success', 'Berhasil menambahkan data prestasi '.$request->nama_lomba);
         return redirect()->route('admin.prestasi-mhs.index');

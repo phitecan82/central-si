@@ -19,6 +19,8 @@
 
                 {{ Form::open(['route' => 'admin.prestasi-mhs.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
 
+                {{ csrf_field() }}
+
                 {{-- CARD HEADER--}}
                 <div class="card-header">
                     Tambah Prestasi Mahasiswa
