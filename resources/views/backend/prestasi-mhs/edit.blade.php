@@ -4,7 +4,7 @@
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
         'Prestasi' => route('admin.prestasi-mhs.index'),
-        'Tambah' => '#'
+        'Edit' => '#'
     ]) !!}
 @endsection
 
@@ -14,16 +14,14 @@
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col">
+        <div class="col-md-12">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.prestasi-mhs.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
+                {{ Form::model($prestasi, ['route' => ['admin.mahasiswa.update', $prestasi->id], 'method' => 'patch']) }}
 
-                {{ csrf_field() }}
-
-                {{-- CARD HEADER--}}
+                {{--CARD HEADER --}}
                 <div class="card-header">
-                    Tambah Prestasi Mahasiswa
+                    Edit Prestasi Mahasiswa
                 </div>
 
                 {{-- CARD BODY--}}
@@ -31,14 +29,13 @@
                     @include('backend.prestasi-mhs._form')
                 </div>
 
-                {{--CARD FOOTER--}}
+                {{-- CARD FOOTER--}}
                 <div class="card-footer">
-                    <input type="submit" value="Simpan" class="btn btn-primary"/>
+                    <input type="submit" class="btn btn-primary" value="Simpan"/>
                 </div>
 
                 {{ Form::close() }}
             </div>
-
         </div>
     </div>
 @endsection
