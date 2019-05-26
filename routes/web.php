@@ -43,9 +43,13 @@ Route::middleware(['auth'])->group( function(){
     /** Routing untuk tugas mulai dari sini */
 
     // Routing sidang TA
+<<<<<<< HEAD
     Route::get('/admin/sidang-ta', 'SidangTaController@index')->name('admin.sidang.index');
     Route::get('/admin/sidang-ta/{id}', 'SidangTaController@show')->name('admin.sidangta.show');
     Route::delete('/admin/sidang-ta/{sidangta}', 'SidangTaControllerTa@destroy')->name('admin.sidangta.destroy');
+=======
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
+>>>>>>> origin/apip
 
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
