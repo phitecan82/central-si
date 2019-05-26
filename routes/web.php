@@ -45,10 +45,15 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/semhas', 'SemhasController@index')->name('admin.semhas.index');  //routing lihat daftar semhas
     Route::post('/admin/semhas', 'SemhasController@store')->name('admin.semhas.store'); //routing simpan data semhas
     Route::get('/admin/semhas/create', 'SemhasController@create')->name('admin.semhas.create'); //routing tampilkan form data semhas 
-    Route::delete('/admin/semhas/{semhas}', 'SemhasController@destroy')->name('admin.semhas.destroy'); //routing hapus data semhas 
+    Route::delete('/admin/semhas/{id}', 'SemhasController@destroy')->name('admin.semhas.destroy'); //routing hapus data semhas 
     Route::patch('/admin/semhas/{semhas}', 'SemhasController@update')->name('admin.semhas.update'); //routing simpan perubahan data semhas
     Route::get('/admin/semhas/{semhas}', 'SemhasController@show')->name('admin.semhas.show'); //routing tampilkan detail semhas
     Route::get('/admin/semhas/{semhas}/edit', 'SemhasController@edit')->name('admin.semhas.edit');  //routing tampilkan form edit semhas
+
+    Route::get('/admin/pesertasemhas/{id}/add', 'PesertaSemhasController@create')->name('admin.pesertasemhas.create'); //routing tampilkan form data semhas 
+    Route::get('/admin/pesertasemhas/{id}', 'PesertaSemhasController@index')->name('admin.pesertasemhas.index');  //routing lihat daftar pesertasemhas
+    Route::post('/admin/pesertasemhas', 'PesertaSemhasController@store')->name('admin.pesertasemhas.store'); //routing simpan data pesertasemhas
+    Route::delete('/admin/pesertasemhas/{id}', 'PesertaSemhasController@destroy')->name('admin.pesertasemhas.destroy'); //routing hapus data pesertasemhas 
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');

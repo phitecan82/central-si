@@ -20,7 +20,10 @@ class Mahasiswa extends Model
     {
        return optional($this->user)->email;
     }
-
+    public function pesertas()
+    {
+        return $this->hasMany(TaPesertaSemhas::class);
+    }
     // Tambahkan Kode yang diperlukan dibawah ini
     public function pesertaSemhas()
     {
