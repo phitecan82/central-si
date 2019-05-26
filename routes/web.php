@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::middleware(['auth'])->group( function(){
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/home', 'HomeController@index')->name('admin.home');
     Route::get('/admin/home', 'HomeController@index')->name('admin.home');
     Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
@@ -43,7 +44,11 @@ Route::middleware(['auth'])->group( function(){
     /** Routing untuk tugas mulai dari sini */
 
     // Routing sidang TA
-    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
+    Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
+    Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
+    Route::get('/admin/sidang/{taSidang}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
+    Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
 
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
@@ -52,7 +57,7 @@ Route::middleware(['auth'])->group( function(){
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 Auth::routes();
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function(){
