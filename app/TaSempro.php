@@ -10,4 +10,9 @@ class TaSempro extends Model
     protected $guarded = [];
 
     // Tambahkan Kode yang diperlukan dibawah ini
+    public function semhass()
+    {
+    	return $this->hasMany(TaSemhas::class);	
+    }
+    
 }

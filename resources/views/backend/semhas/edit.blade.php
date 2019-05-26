@@ -9,7 +9,9 @@
 @endsection
 
 @section('toolbar')
+    {!! cui_toolbar_btn(route('admin.semhas.create'), 'icon-plus', 'Tambah Semhas') !!}
     {!! cui_toolbar_btn(route('admin.semhas.index'), 'icon-list', 'List Semhas') !!}
+
 @endsection
 
 @section('content')
@@ -17,16 +19,16 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.semhas.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) }}
+                {{Form::model($semhas, ['route' => ['admin.semhas.update', $semhas->id], 'method' => 'patch', 'files' => 'true']) }}
 
                 {{-- CARD HEADER --}}
                 <div class="card-header">
-                    Tambah Data Semhas
+                    Edit Data Semhas
                 </div>
 
                 {{-- CARD BODY --}}
                 <div class="card-body">
-                    @include('backend.semhas._form')
+                    @include('backend.semhas.edit_form')
                 </div>
 
                 {{-- CARD FOOTER --}}

@@ -10,8 +10,22 @@ class TaSemhas extends Model
     protected $guarded = [];
 
     // Tambahkan Kode yang diperlukan dibawah ini
-    public function pesertas()
+    public function ruangans()
     {
-        return $this->hasMany(TaPesertaSemhas::class);
+        return $this->hasOne(Ruangan::class);
     }
+    
+    public function sempros()
+    {
+        return $this->hasOne(TaSempro::class);
+    }
+    public function pengujis()
+    {
+        return $this->hasMany(TaPengujiSemhas::class);
+    }
+    public function sidangs()
+    {
+        return $this->hasMany(TaSidang::class);
+    }
+
 }
