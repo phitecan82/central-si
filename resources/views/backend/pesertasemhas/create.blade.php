@@ -21,7 +21,7 @@
 
                 {{-- CARD HEADER --}}
                 <div class="card-header">
-                    Tambah Data Semhas
+                    Tambah Data Peserta Semhas
                 </div>
 
                 {{-- CARD BODY --}}
