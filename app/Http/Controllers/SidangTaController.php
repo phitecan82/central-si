@@ -70,8 +70,7 @@ class SidangTaController extends Controller
         ->select('dosen.nama','mahasiswa.nama_mahasiswa', 'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 'ta_sidang.sidang_time', 'ruangan.nama_ruangan', 'ta_sidang.nilai_angka', 'ta_sidang.nilai_huruf', 'ta_sidang.nilai_toefl')
         ->where('ta_sidang.id', '=', $id)
         ->get();
-                
-        
+        $sidangta = $sidangta[0];
                 return view('backend.sidang-ta.show', compact('sidangta'));
     }
 
