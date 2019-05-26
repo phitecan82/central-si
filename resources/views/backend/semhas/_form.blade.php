@@ -15,7 +15,7 @@
 
 <div class="form-group">
     <label for="ruangan_id">Ruangan</label>
-    {{ Form::select('ruangan_id', $ruangan, null, ['class' => 'form-control', 'id' => 'nama', 'placeholder' => 'Ruangan']) }}
+    {{ Form::select('nama', $ruangan, null, ['class' => 'form-control', 'id' => 'nama', 'placeholder' => 'Ruangan']) }}
 </div>
 
 <div class="form-group">
