@@ -13,6 +13,6 @@ class Ruangan extends Model
     // Tambahkan Kode yang diperlukan dibawah ini
     public function ruangans()
     {
-        return $this->hasMany(TaPesertaSemhas::class);
+        return $this->hasMany(TaSemhas::class);
     }
 }

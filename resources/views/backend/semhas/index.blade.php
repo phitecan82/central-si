@@ -39,18 +39,20 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th class="text-center">Nama Mahasiswa</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Jam</th>
-                            <th class="text-center">Jumlah Peserta</th>
+                            <th class="text-center">Ruangan</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                         @forelse($semhass as $semhas)
                             <tr>
+                                <td class="text-center">{{ $semhas->nama_mahasiswa }}</td>
                                 <td class="text-center">{{ $semhas->semhas_at }}</td>
                                 <td class="text-center">{{ $semhas->semhas_time }}</td>
-                                <td class="text-center">{{ $semhas->pesertas->count() }}</td>
+                                <td class="text-center">{{ $semhas->nama }}</td>
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.semhas.show', [$semhas->id])) !!}
                                     {!! cui_btn_edit(route('admin.semhas.edit', [$semhas->id])) !!}
