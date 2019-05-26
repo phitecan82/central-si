@@ -39,6 +39,7 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
+                            <th class="text-center">Nama Mahasiswa</th>
                             <th class="text-center">Tanggal</th>
                             <th class="text-center">Jam</th>
                             <th class="text-center">Ruangan</th>
@@ -48,6 +49,7 @@
                         <tbody>
                         @forelse($semhass as $semhas)
                             <tr>
+                                <td class="text-center">{{ $semhas->nama_mahasiswa }}</td>
                                 <td class="text-center">{{ $semhas->semhas_at }}</td>
                                 <td class="text-center">{{ $semhas->semhas_time }}</td>
                                 <td class="text-center">{{ $semhas->nama }}</td>
