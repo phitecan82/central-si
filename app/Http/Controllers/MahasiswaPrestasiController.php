@@ -90,6 +90,9 @@ class MahasiswaPrestasiController extends Controller
 
     public function destroy($id)
     {
-        //
+        $prestasi = MahasiswaPrestasi::findOrFail($id);
+        MahasiswaPrestasi::destroy($id);
+        session()->flash('flash_success', 'Berhasil menghapus data prestasi '.$prestasi->nama_lomba);
+        return redirect()->route('admin.prestasi-mhs.index'); 
     }
 }
