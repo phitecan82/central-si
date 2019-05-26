@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::model($prestasi, ['route' => ['admin.mahasiswa.update', $prestasi->id], 'method' => 'patch']) }}
+                {{ Form::model($prestasi, ['route' => ['admin.prestasi-mhs.update', $prestasi->id], 'method' => 'patch', 'enctype' => 'multipart/form-data']) }}
 
                 {{--CARD HEADER --}}
                 <div class="card-header">
@@ -27,6 +27,7 @@
                 {{-- CARD BODY--}}
                 <div class="card-body">
                     @include('backend.prestasi-mhs._form')
+                    <i>Abaikan jika tidak ingin mengganti file sertifikat</i>
                 </div>
 
                 {{-- CARD FOOTER--}}

@@ -13,7 +13,7 @@ class MahasiswaPrestasiController extends Controller
         'mahasiswa_id' => 'required',
         'nama_lomba' => 'required',
         'prestasi'  => 'required',
-        'sertifikat' => 'file',
+        'sertifikat' => 'file'
     ];
 
     public function index()
@@ -66,12 +66,26 @@ class MahasiswaPrestasiController extends Controller
 
     public function edit($id)
     {
-        //
+        $prestasi = MahasiswaPrestasi::findOrFail($id);
+        $mahasiswas = Mahasiswa::pluck('nama', 'id');
+        return view('backend.prestasi-mhs.edit', compact('prestasi', 'mahasiswas'));
     }
 
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, $this->validation_rules);        
+        $file = $request->file('sertifikat');
+        $data = $request->except('sertifikat');
+        if($file){
+            $fileName = sha1(microtime()) . '.' . $file->getClientOriginalExtension();
+            $destinationPath = $file->storeAs('storage/prestasi', $fileName);
+            $file->move($destinationPath, $fileName);
+            $data['sertifikat'] = $fileName;
+        }        
+        $prestasi = MahasiswaPrestasi::findOrFail($id);
+        $prestasi->update($data);
+        session()->flash('flash_success', 'Berhasil memperbaharui data prestasi '.$prestasi->nama_lomba);
+        return redirect()->route('admin.prestasi-mhs.show', [$prestasi->id]);   
     }
 
     public function destroy($id)
