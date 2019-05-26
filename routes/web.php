@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,16 +9,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::middleware(['auth'])->group( function(){
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin/home', 'HomeController@index')->name('admin.home');
     Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
-
     /** Routing Pengelolaan Dosen */
     Route::post('/admin/dosen/cari', 'DosenCariController@show')->name('admin.dosencari.show'); //routing pencarian dosen
     Route::get('/admin/dosen/cari', 'DosenController@index')->name('admin.dosencari.index'); //routing pencarian dosen
-
     Route::get('/admin/dosen', 'DosenController@index')->name('admin.dosen.index');  //routing lihat daftar dosen
     Route::post('/admin/dosen', 'DosenController@store')->name('admin.dosen.store'); //routing simpan data dosen baru
     Route::get('/admin/dosen/create', 'DosenController@create')->name('admin.dosen.create'); //routing tampilkan form data dosen baru
@@ -27,8 +23,6 @@ Route::middleware(['auth'])->group( function(){
     Route::patch('/admin/dosen/{dosen}', 'DosenController@update')->name('admin.dosen.update'); //routing simpan perubahan data dosen
     Route::get('/admin/dosen/{dosen}', 'DosenController@show')->name('admin.dosen.show'); //routing tampilkan detail dosen
     Route::get('/admin/dosen/{dosen}/edit', 'DosenController@edit')->name('admin.dosen.edit');  //routing tampilkan form edit dosen
-
-
     /** Routing Pengelolaan Mahasiswa */
     Route::post('/admin/mahasiswa/cari', 'MahasiswaCariController@show')->name('admin.mahasiswacari.show'); //routing pencarian mahasiswa
     Route::get('/admin/mahasiswa/cari', 'MahasiswaController@index')->name('admin.mahasiswacari.index'); //routing pencarian mahasiswa
@@ -39,7 +33,6 @@ Route::middleware(['auth'])->group( function(){
     Route::patch('/admin/mahasiswa/{mahasiswa}', 'MahasiswaController@update')->name('admin.mahasiswa.update'); //routing simpan perubahan data mahasiswa
     Route::get('/admin/mahasiswa/{mahasiswa}', 'MahasiswaController@show')->name('admin.mahasiswa.show'); //routing tampilkan detail mahasiswa
     Route::get('/admin/mahasiswa/{mahasiswa}/edit', 'MahasiswaController@edit')->name('admin.mahasiswa.edit');  //routing tampilkan form edit mahasiswa
-
     /** Routing untuk tugas mulai dari sini */
     /** Routing Pengelolaan Semhas */
     Route::get('/admin/semhas', 'SemhasController@index')->name('admin.semhas.index');  //routing lihat daftar semhas
@@ -47,19 +40,22 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/semhas/create', 'SemhasController@create')->name('admin.semhas.create'); //routing tampilkan form data semhas 
     Route::delete('/admin/semhas/{id}', 'SemhasController@destroy')->name('admin.semhas.destroy'); //routing hapus data semhas 
     Route::patch('/admin/semhas/{semhas}', 'SemhasController@update')->name('admin.semhas.update'); //routing simpan perubahan data semhas
-    Route::get('/admin/semhas/{semhas}', 'SemhasController@show')->name('admin.semhas.show'); //routing tampilkan detail semhas
+    Route::get('/admin/semhas/{id}', 'SemhasController@show')->name('admin.semhas.show'); //routing tampilkan detail semhas
     Route::get('/admin/semhas/{semhas}/edit', 'SemhasController@edit')->name('admin.semhas.edit');  //routing tampilkan form edit semhas
+  
+
+
 
     Route::get('/admin/pesertasemhas/{id}/add', 'PesertaSemhasController@create')->name('admin.pesertasemhas.create'); //routing tampilkan form data semhas 
     Route::get('/admin/pesertasemhas/{id}', 'PesertaSemhasController@index')->name('admin.pesertasemhas.index');  //routing lihat daftar pesertasemhas
     Route::post('/admin/pesertasemhas', 'PesertaSemhasController@store')->name('admin.pesertasemhas.store'); //routing simpan data pesertasemhas
     Route::delete('/admin/pesertasemhas/{id}', 'PesertaSemhasController@destroy')->name('admin.pesertasemhas.destroy'); //routing hapus data pesertasemhas 
 
+    Route::get('/admin/pesertasemhas/{id}', 'PesertaSemhasController@show')->name('admin.pesertasemhas.show'); //routing tampilkan detail semhas
+    
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
-
 });
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -73,4 +69,3 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function(){
     Route::resource('users', 'Backend\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Backend\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
 });
-
