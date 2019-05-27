@@ -49,12 +49,26 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/bimbingan', 'BimbinganController@index')->name('admin.bimbingan.index');  //routing lihat daftar penelitian
     Route::post('/admin/bimbingan', 'BimbinganController@store')->name('admin.bimbingan.store'); //routing simpan data bimbingan baru
     Route::get('/admin/bimbingan/create/{id}', 'BimbinganController@create')->name('admin.bimbingan.create'); //routing tampilkan form data bimbingan baru
-    Route::delete('/admin/bimbingan/{bimbingan}', 'BimbinganController@destroy')->name('admin.bimbingan.destroy'); //routing hapus data bimbingan baru
     Route::patch('/admin/bimbingan/{bimbingan}', 'BimbinganController@update')->name('admin.bimbingan.update'); //routing simpan perubahan data bimbingan
     Route::get('/admin/bimbingan/{bimbingan}', 'BimbinganController@show')->name('admin.bimbingan.show'); //routing tampilkan detail bimbingan
     Route::get('/admin/bimbingan/{bimbingan}/show', 'BimbinganController@detail')->name('admin.bimbingan.detail'); //routing tampilkan detail bimbingan
     Route::get('/admin/bimbingan/{bimbingan}/edit', 'BimbinganController@edit')->name('admin.bimbingan.edit');  //routing tampilkan form edit bimbingan
+    Route::get('storage/{filename}', function ($filename)
+    {
+        $path = storage_path('app\public\bimbingan/' . $filename);
+        // dd($path);
+        if (!File::exists($path)) {
+            abort(404);
+        }
 
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
+    });
 });
 
 Route::get('/', function () {

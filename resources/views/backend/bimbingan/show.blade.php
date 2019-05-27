@@ -19,7 +19,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>Riwayat Bimbingan TA</strong>
+                    <strong>Riwayat Bimbingan TA {{ $judul }}</strong>
                 </div>
 
                 {{-- CARD BODY--}}
