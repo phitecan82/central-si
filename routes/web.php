@@ -44,17 +44,17 @@ Route::middleware(['auth'])->group( function(){
     /** Daftar Keluarga   */
     /**  */
 
-    Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar mahasiswa
-
-
-     Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar mahasiswa
-    Route::post('/admin/keluarga', 'kekuargaController@store')->name('admin.keluarga.store'); //routing simpan data mahasiswa baru
-    Route::get('/admin/keluarga/create', 'keluargaController@create')->name('admin.keluarga.create'); //routing tampilkan form data mahasiswa baru
-    Route::delete('/admin/keluarga/{mahasiswa}', 'keluargaController@destroy')->name('admin.keluarga.destroy'); //routing hapus data mahasiswa baru
-    Route::patch('/admin/keluarga/{mahasiswa}', 'keluargaController@update')->name('admin.keluarga.update'); //routing simpan perubahan data mahasiswa
-    Route::get('/admin/keluarga/{mahasiswa}', 'keluargaontroller@show')->name('admin.keluarga.show'); //routing tampilkan detail mahasiswa
-    Route::get('/admin/keluarga/{mahasiswa}/edit', 'keluargaController@edit')->name('admin.keluarga.edit');  //routing tampilkan form edit mahasiswa
-
+    Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar keluarga
+    Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar  keluarga
+    Route::post('/admin/keluarga', 'kekuargaController@store')->name('admin.keluarga.store'); //routing simpan data keluarga baru
+    Route::get('/admin/keluarga/create', 'keluargaController@create')->name('admin.keluarga.create'); //routing tampilkan form data  keluarga baru
+    Route::delete('/admin/keluarga/{kelaurga}', 'keluargaController@destroy')->name('admin.keluarga.destroy'); //routing hapus data  keluarga baru
+    Route::patch('/admin/keluarga/{mahasiswa}', 'keluargaController@update')->name('admin.keluarga.update'); //routing simpan perubahan data  keluarga
+    Route::get('/admin/keluarga/{mahasiswa}', 'keluargaController@show')->name('admin.keluarga.show'); //routing tampilkan detail  keluarga
+    Route::post('/admin/keluarga/{mahasiswa}', 'keluargaController@show')->name('admin.keluarga.show'); //routing tampilkan detail  keluarga
+    Route::get('/admin/keluarga/{mahasiswa}/edit', 'keluargaController@edit')->name('admin.keluarga.edit');  //routing tampilkan form edit  keluarga
+     Route::get('/admin/keluarga/{mahasiswa}', 'keluargaController@detail')->name('admin.keluarga.detail');  //routing tampilkan 
+  
 
 
 

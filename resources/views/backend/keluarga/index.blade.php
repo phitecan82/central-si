@@ -50,7 +50,7 @@
                             <tr>
                                 <td>{{$keluarga ->nama }}</td>
                                 <td class="text-center">{{$keluarga ->alamat }}</td>
-                                <td class="text-center">{{ $keluarga ->no_hp }}</td>
+                                <td class="text-center">{{$keluarga ->no_hp }}</td>
                                 <td class="text-center">
                                     {!! cui_btn_view(route('admin.keluarga.show', [$keluarga->id])) !!}
                                     {!! cui_btn_edit(route('admin.keluarga.edit', [$keluarga->id])) !!}
