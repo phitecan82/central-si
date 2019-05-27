@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group( function(){
     Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
 
     Route::post('/admin/sidang_ta/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sidang baru
-    Route::get('/admin/proposal-kp/{id}/add', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
+    Route::get('/admin/sidang_ta/add', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');

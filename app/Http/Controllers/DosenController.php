@@ -5,14 +5,16 @@ namespace App\Http\Controllers;
 use App\Dosen;
 use App\User;
 use Illuminate\Http\Request;
+Use Exception;
+use DB;
 
 class DosenController extends Controller
 {
     public $validation_rules = [
-        'email' => 'required|email',
+        'email' =>'required|email',
         'nidn' => 'required',
         'nama' => 'required',
-        'nik' => 'required',
+        'nik'  => 'required',
     ];
 
     public function __construct()
@@ -98,4 +100,19 @@ class DosenController extends Controller
         session()->flash('flash_success', "Berhasil menghapus dosen ".$dosen->nama);
         return redirect()->route('admin.dosen.index');
     }
+    public function add($id)
+    {
+        $KP = ::findOrFail($id);
+        $mhs = Mahasiswa::pluck('nama', 'id');
+        return view('backend.proposal-kp.add', compact('mhs', 'KP'));
+    }
+    public function insert(Request $request)
+    {
+        $this->validate($request, $this->anggota_validation_rules);
+        $data = $request->all();
+        KpMahasiswa::create($data);
+        session()->flash('flash_success', 'Berhasil menambahkan data anggota KP');
+        return redirect()->route('admin.proposal-kp.showkelompok',$request->kp_proposal_id);
+    }
+    
 }
