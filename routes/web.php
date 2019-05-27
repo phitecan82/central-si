@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index')->name('home');
+
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+
     Route::get('/admin/home', 'HomeController@index')->name('admin.home');
     Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
@@ -44,6 +47,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Routing sidang TA
+
     Route::get('/admin/sidang-ta', 'SidangTaController@index')->name('admin.sidang.index');
     Route::get('/admin/sidang-ta/{id}', 'SidangTaController@show')->name('admin.sidangta.show');
     Route::delete('/admin/sidang-ta/{sidangta}', 'SidangTaControllerTa@destroy')->name('admin.sidangta.destroy');
@@ -63,13 +67,14 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 Auth::routes();
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
@@ -81,4 +86,3 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('users', 'Backend\UsersController');
     Route::post('users_mass_destroy', ['uses' => 'Backend\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
 });
-

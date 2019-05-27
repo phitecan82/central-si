@@ -45,7 +45,7 @@
 
                     {{-- Menu TA Mahasiswa--}}
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.sidang.index') }}">
+                        <a class="nav-link" href="{{ route('admin.sidang_ta.index') }}">
                             <i class="nav-icon fas fa-minus"></i> TA Mahasiswa
                         </a>
                     </li>
