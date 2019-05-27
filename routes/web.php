@@ -10,9 +10,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(['auth'])->group(function () {
+
+    Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::middleware(['auth'])->group( function(){
+    Route::get('/home', 'HomeController@index')->name('admin.home');
+
     Route::get('/admin/home', 'HomeController@index')->name('admin.home');
     Route::get('/admin/dashboard', 'DashboardController@index')->name('admin.dashboard');
 
@@ -44,7 +49,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Routing sidang TA
-    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
+    Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
+    Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
+    Route::get('/admin/sidang/{taSidang}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
+    Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
+
 
     /** Pengelolaan Penelitian */
     Route::get('/admin/penelitian', 'PenelitianController@index')->name('admin.penelitian.index');  //routing lihat daftar mahasiswa
@@ -61,13 +71,17 @@ Route::middleware(['auth'])->group(function () {
 
 
 
+    Route::post('/admin/sidang_ta/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sidang baru
+    Route::get('/admin/proposal-kp/{id}/add', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
+
+
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
 });
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 Auth::routes();
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {

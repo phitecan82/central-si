@@ -3,13 +3,13 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Mahasiswa' => route('admin.mahasiswa.index'),
+        'Mahasiswa' => route('admin.sidang_ta.index'),
         'Index' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.mahasiswa.create'), 'icon-plus', 'Tambah Mahasiswa') !!}
+    {!! cui_toolbar_btn(route('admin.sidang_ta.create'), 'icon-plus', 'Tambah sidang') !!}
 @endsection
 
 @section('content')
@@ -42,28 +42,25 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">NIM</th>
-                            <th class="text-center">Angkatan</th>
+                            <th>Nama mahasiswa</th>
+                            <th class="text-center">Tanggal Sidang TA</th>
+                            <th class="text-center">Ruangan</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        {{--  @foreach($mahasiswas as $mahasiswa)  --}}
-                            <tr>
-                                <td>test</td>
-                                <td class="text-center">test</td>
-                                <td class="text-center">test</td>
-                                <td class="text-center">
-                                    {{--  {!! cui_btn_view(route('admin.mahasiswa.show', [$mahasiswa->id])) !!}
-                                    {!! cui_btn_edit(route('admin.mahasiswa.edit', [$mahasiswa->id])) !!}
-                                    {!! cui_btn_delete(route('admin.mahasiswa.destroy', [$mahasiswa->id]), "Anda yakin akan menghapus data dosen ini?") !!}  --}}
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-primary']) }}
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-warning']) }} 
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-danger']) }} 
-                                </td>
-                            </tr>
-                        {{--  @endforeach  --}}
+                          @foreach($taSidang as $taSidang)                             
+                                <tr>
+                                    <td class="text-center">{{$taSidang->nama_mhs}}</td>
+                                    <td class="text-center">{{$taSidang->sidang_at}}</td>
+                                    <td class="text-center">{{$taSidang->nama_ruangan}}</td>
+                                    <td class="text-center">
+                                         {{-- {!! cui_btn_view(route('admin.sidang_ta.show', [$mahasiswa->id])) !!} --}}
+                                        {!! cui_btn_edit(route('admin.sidang_ta.edit', [$taSidang->id])) !!}
+                                        {{-- {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$mahasiswa->id]), "Anda yakin akan menghapus data dosen ini?") !!}  --}}
+                                    </td>
+                                </tr>
+                         @endforeach  
                         </tbody>
                     </table>
 

@@ -19,7 +19,7 @@ class CreateTaSemhasTable extends Migration
             $table->date('semhas_at')->nullable();
             $table->time('semhas_time')->nullable();
             $table->unsignedBigInteger('ruangan_id')->nullable();
-            $table->integer('status')->nullable();
+            $table->integer('status')->nullable(); 
             $table->integer('rekomendasi')->nullable();
             $table->date('sidang_deadline_at')->nullable();
             $table->string('file_ba_seminar')->nullable();
