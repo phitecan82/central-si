@@ -71,7 +71,7 @@ class SidangTaController extends Controller
         ->where('ta_sidang.id', '=', $id)
         ->get();
         $sidangta = $sidangta[0];
-                return view('backend.sidang-ta.show', compact('sidangta'));
+        return view('backend.sidang_ta.show', compact('sidangta'));
     }
 
     /**
