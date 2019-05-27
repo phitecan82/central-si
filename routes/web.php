@@ -44,9 +44,7 @@ Route::middleware(['auth'])->group(function () {
 
 
     // Routing sidang TA
-    Route::get('/admin/sidang-ta', 'SidangTaController@index')->name('admin.sidang.index');
-    Route::get('/admin/sidang-ta/{id}', 'SidangTaController@show')->name('admin.sidangta.show');
-    Route::delete('/admin/sidang-ta/{sidangta}', 'SidangTaControllerTa@destroy')->name('admin.sidangta.destroy');
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
 
     /** Pengelolaan Penelitian */
     Route::get('/admin/penelitian', 'PenelitianController@index')->name('admin.penelitian.index');  //routing lihat daftar mahasiswa
