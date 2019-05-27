@@ -11,12 +11,13 @@ use DB;
 class BimbinganController extends Controller
 {   
     private $validasi=[
-        'tugas_akhir_id' => 'required',
-        'pembimbing_id' => 'required',
-        'tanggal' => 'required',
+        'tugas_akhir_id' => 'required|numeric',
+        'pembimbing_id' => 'required|numeric',
+        'tanggal' => 'required|date',
         'progress' => 'required',
         'catatan' => 'required',
-        'status_bimbingan' => 'required'
+        'status_bimbingan' => 'required|numeric',
+        'file' => 'file'
     ];
         
     public function index()
