@@ -185,7 +185,7 @@ class SidangController extends Controller
         return redirect()->route('admin.sidang_ta.showkelompok',$request->sidang_ta_id);
         return view('backend.sidang_ta.index');
 
-
+=======
         return view('backend.sidangta.create');
     }
     public function store(Request $request)
@@ -211,5 +211,6 @@ class SidangController extends Controller
 
         session()->flash('flash_success', 'Berhasil menambahkan data sidang pada tanggal'. $request->input('sidang_at'));
         return redirect()->route('admin.sidang_ta.show', [$user->id]);
+>>>>>>> dioharvandy_1711522004
     }
 }

@@ -102,10 +102,10 @@ Auth::routes();
 Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
     //Laravel Permission spatie/permissions
     Route::resource('permissions', 'Backend\PermissionsController');
-    Route::post('permissions_mass_destroy', ['uses' => 'Backend\PermissionsController@massDestroy', 'as' => 'permissions.mass_destroy']);
+    // Route::post('permissions_mass_destroy', ['uses' => 'Backend\PermissionsController@massDestroy', 'as' => 'permissions.mass_destroy']);
     Route::resource('roles', 'Backend\RolesController');
     Route::post('roles_mass_destroy', ['uses' => 'Backend\RolesController@massDestroy', 'as' => 'roles.mass_destroy']);
     Route::resource('users', 'Backend\UsersController');
-    Route::post('users_mass_destroy', ['uses' => 'Backend\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
+    // Route::post('users_mass_destroy', ['uses' => 'Backend\UsersController@massDestroy', 'as' => 'users.mass_destroy']);
 });
 
