@@ -10,6 +10,7 @@ use App\TaSidang;
 use App\TaSemhas;
 use App\Ruangan;
 use App\Dosen;
+use App\TaPengujiSidang;
 
 class SidangController extends Controller
 {
@@ -133,5 +134,24 @@ class SidangController extends Controller
         $taSidang->save();
             
             return redirect('admin/sidang');
+    }
+    public $anggota_validation_rules = [
+        'dosen_id' => 'required',
+        'bidang_usulan' => 'required'
+    ];
+    public function add($id)
+    {
+        $UJ = TaPengujiSidang::findOrFail($id);
+        $ds = Dosen::pluck('nama', 'id');
+        return view('backend.sidang_ta.add', compact('ds','UJ'));
+    }
+
+    public function insert(Request $request)
+    {
+        $this->validate($request, $this->anggota_validation_rules);
+        $data = $request->all();
+        TaPengujiSidang::create($data);
+        session()->flash('flash_success', 'Berhasil menambahkan data Penguji Sidang');
+        return redirect()->route('admin.sidang_ta.showkelompok',$request->sidang_ta_id);
     }
 }
