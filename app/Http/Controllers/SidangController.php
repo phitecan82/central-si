@@ -135,7 +135,7 @@ class SidangController extends Controller
             
             return redirect('admin/sidang');
     }
-    public $anggota_validation_rules = [
+    public $penguji_validation_rules = [
         'dosen_id' => 'required',
         'bidang_usulan' => 'required'
     ];
@@ -148,7 +148,7 @@ class SidangController extends Controller
 
     public function insert(Request $request)
     {
-        $this->validate($request, $this->anggota_validation_rules);
+        $this->validate($request, $this->penguji_validation_rules);
         $data = $request->all();
         TaPengujiSidang::create($data);
         session()->flash('flash_success', 'Berhasil menambahkan data Penguji Sidang');
