@@ -68,6 +68,12 @@
                             <i class="nav-icon fas fa-graduation-cap"></i> Pengelolaan Semhas
                         </a>
                     </li>
+            {{--  PENGELOLAAN PENELITIAN--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.penelitian.index') }}">
+                    <i class="nav-icon fas fa-book"></i> Kelola Penelitian
+                </a>
+            </li>
         </ul>
     </nav>
 
