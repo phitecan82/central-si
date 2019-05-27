@@ -34,6 +34,21 @@
                             <i class="nav-icon fas fa-minus"></i> Mahasiswa
                         </a>
                     </li>
+                    
+                </ul>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon fas fa-graduation-cap"></i> Sidang TA</a>
+                <ul class="nav-dropdown-items">
+
+                    {{-- Menu TA Mahasiswa--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.sidang.index') }}">
+                            <i class="nav-icon fas fa-minus"></i> TA Mahasiswa
+                        </a>
+                    </li>
 
                 </ul>
             </li>
@@ -64,6 +79,12 @@
                 </ul>
             </li>
 
+            {{--  PENGELOLAAN PENELITIAN--}}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.penelitian.index') }}">
+                    <i class="nav-icon fas fa-book"></i> Kelola Penelitian
+                </a>
+            </li>
         </ul>
     </nav>
 
