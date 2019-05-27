@@ -1,0 +1,152 @@
+[33mcommit e86c485551e0f02c930552b27f49e01885910744[m[33m ([m[1;36mHEAD -> [m[1;32mmuhammad_hasbillah_1711523002[m[33m, [m[1;31morigin/muhammad_hasbillah_1711523002[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 4cfd9f9 96657a1
+Author: phitecan82 <47310642+phitecan82@users.noreply.github.com>
+Date:   Mon May 27 08:18:28 2019 +0700
+
+    Merge pull request #3 from phitecan82/revert-2-1711523002_muhammad-hasbillah
+    
+    Revert "1711523002 muhammad hasbillah"
+
+[33mcommit 96657a1daa29b952f01527629af9e7ff0df5d46f[m
+Author: phitecan82 <47310642+phitecan82@users.noreply.github.com>
+Date:   Mon May 27 08:18:09 2019 +0700
+
+    Revert "1711523002 muhammad hasbillah"
+
+[33mcommit 4cfd9f91b6d237cd8efa9b3c3a56bc278a6ed781[m
+Merge: 932570d 6ae9287
+Author: phitecan82 <47310642+phitecan82@users.noreply.github.com>
+Date:   Mon May 27 07:43:57 2019 +0700
+
+    Merge pull request #2 from phitecan82/1711523002_muhammad-hasbillah
+    
+    1711523002 muhammad hasbillah
+
+[33mcommit 932570dc47f69ccf90ff71c0aa407e2eea0e2e56[m
+Merge: 619ee85 a119b6a
+Author: phitecan82 <47310642+phitecan82@users.noreply.github.com>
+Date:   Mon May 27 07:37:20 2019 +0700
+
+    Merge pull request #1 from phitecan82/Halim_Wardana_1711523010
+    
+    Halim wardana 1711523010
+
+[33mcommit 6ae928710cd5ed8819e774d440bc881fea1aae34[m
+Author: abil28 <49506834+abil28@users.noreply.github.com>
+Date:   Sun May 26 23:56:16 2019 +0700
+
+    view detail sidang TA
+
+[33mcommit 74a73145b481d07b958b510c3fe78763acdc4eaf[m
+Merge: 45d4313 8ed1e0e
+Author: abil28 <49506834+abil28@users.noreply.github.com>
+Date:   Sun May 26 16:50:03 2019 +0700
+
+    view data detail sidang ta dan hapus data sidang ta
+
+[33mcommit 45d4313a2f17c3e49d32c6dc4edfa35908b4d17b[m
+Author: abil28 <49506834+abil28@users.noreply.github.com>
+Date:   Sun May 26 16:41:41 2019 +0700
+
+    buek select detail
+
+[33mcommit a119b6a942786da71a47777be12e5b15f09a3ad1[m
+Merge: 8ed1e0e b2e2ba9
+Author: phitecan82 <47310642+phitecan82@users.noreply.github.com>
+Date:   Wed May 8 10:24:06 2019 +0700
+
+    Merge branch 'master' into Halim_Wardana_1711523010
+
+[33mcommit 8ed1e0e623d01eb74c814eb895886345c91a15ca[m
+Author: unknown <afif.maulana.isman@gmail.com>
+Date:   Mon May 6 14:29:30 2019 +0700
+
+    nambah view ta mahasiswa
+
+[33mcommit b2e2ba9bd97dbf7a05679aa8d6d41dec273d6c09[m[33m ([m[1;31mupstream/master[m[33m)[m
+Merge: 619ee85 a9edb88
+Author: husnilk <husnil.k@gmail.com>
+Date:   Fri May 3 13:17:58 2019 +0700
+
+    Merge pull request #2 from fti-unand/anggota_c
+    
+    Tambahan fitur pengelolaan penelitian user
+
+[33mcommit a9edb882caefe6823a33883ae34c796425cc7242[m
+Merge: 770f8cc d81f28f
+Author: Husnil Kamil <husnil.k@gmail.com>
+Date:   Thu May 2 17:51:29 2019 +0700
+
+    Merge branch 'master' into anggota_c
+
+[33mcommit d81f28fb7b02c4221ac78f007f4010a07a35f0cd[m
+Merge: 53c831b 7180da1
+Author: husnilk <husnil.k@gmail.com>
+Date:   Thu May 2 17:46:26 2019 +0700
+
+    Merge pull request #3 from fti-unand/fitur/form-pencarian
+    
+    perbaikan form pencarian
+
+[33mcommit 770f8cc2c8a39080bf48b4826f3dd19f912b1452[m
+Author: husnilk <husnil.k@gmail.com>
+Date:   Thu May 2 05:59:01 2019 +0700
+
+    perbaikan tambah penelitian
+    
+    Setelah tambah seharusnya tampil detail penelitiannya.
+
+[33mcommit 4e84b3d1d84b382e518a156430c90723f468a6de[m
+Author: husnilk <husnil.k@gmail.com>
+Date:   Wed May 1 22:44:39 2019 +0700
+
+    tambah fasilitas edit, hapus, lihat dan tambah/hapus anggota
+
+[33mcommit 53c831be32f682c680a7933169f2e6342357fc29[m
+Merge: be64bba b87d9a9
+Author: husnilk <husnil.k@gmail.com>
+Date:   Wed May 1 14:33:49 2019 +0700
+
+    Merge pull request #2 from fti-unand/anggota_b
+    
+    penambahan fitur tambah penelitian
+
+[33mcommit b87d9a9b35492676234fc56c8e9897cb3b913895[m
+Merge: 04fb82d be64bba
+Author: husnilk <husnil.k@gmail.com>
+Date:   Wed May 1 14:33:28 2019 +0700
+
+    Merge branch 'master' into anggota_b
+
+[33mcommit be64bbabb787b8049a6a19369bc63d71c1bc1663[m
+Merge: 619ee85 43ea796
+Author: husnilk <husnil.k@gmail.com>
+Date:   Wed May 1 14:28:57 2019 +0700
+
+    Merge pull request #1 from fti-unand/anggota_a
+    
+    penambahan fitur list penelitian
+
+[33mcommit 04fb82de27bf26f84731b9028223801ea91847d5[m
+Author: Husnil Kamil <husnil.k@gmail.com>
+Date:   Tue Apr 30 19:09:20 2019 +0700
+
+    penambahan fitur tambah penelitian
+
+[33mcommit 43ea7969795fbd635dd6ef6400125c0c434537f7[m
+Author: husnilk <husnil.k@gmail.com>
+Date:   Wed Apr 24 23:59:49 2019 +0700
+
+    penambahan fitur list penelitian
+
+[33mcommit 7180da1354e5682f10bb96b80b2eea7c3806f718[m
+Author: husnilk <husnil.k@gmail.com>
+Date:   Tue Apr 23 07:57:46 2019 +0700
+
+    perbaikan form pencarian
+
+[33mcommit 619ee851914e2cbac1e242d277297b516d2e8e22[m
+Author: husnilk <husnil.k@gmail.com>
+Date:   Mon Apr 22 21:32:04 2019 +0700
+
+    Initial commit

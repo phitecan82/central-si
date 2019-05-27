@@ -44,6 +44,7 @@
 
                     <table class="table table-striped">
                         <thead>
+
                         <tr>
 
                             <th>Nama mahasiswa</th>
@@ -84,6 +85,28 @@
                                 </td>
                             </tr>
                         @endforeach
+
+
+                            <tr>
+                                <th>id</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">NIM</th>
+                                <th class="text-center">Angkatan</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($sidangta  as $data)
+                            <tr>
+                                <td>{{ $data->id }}</td>
+                                <td>{{ $data->ta_semhas_id }}</td>
+                                <td class="text-center">{{ $data->nilai_angka }}</td>
+                                <td class="text-center">{{ $data->nilai_huruf }}</td>
+                                <td>                  
+                                    {!! cui_btn_view(route('admin.sidangta.show', [$data->id])) !!}
+                                </td>
+                            </tr>
+                         @endforeach
 
                         </tbody>
                     </table>

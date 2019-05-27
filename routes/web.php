@@ -49,6 +49,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
     // Routing sidang TA
+ HEAD
 
 
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
@@ -59,6 +60,11 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
+
+    Route::get('/admin/sidang-ta', 'SidangTaController@index')->name('admin.sidang.index');
+    Route::get('/admin/sidang-ta/{id}', 'SidangTaController@show')->name('admin.sidangta.show');
+    Route::delete('/admin/sidang-ta/{sidangta}', 'SidangTaControllerTa@destroy')->name('admin.sidangta.destroy');
+
 
 
 
