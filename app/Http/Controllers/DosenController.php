@@ -100,19 +100,6 @@ class DosenController extends Controller
         session()->flash('flash_success', "Berhasil menghapus dosen ".$dosen->nama);
         return redirect()->route('admin.dosen.index');
     }
-    public function add($id)
-    {
-        $KP = ::findOrFail($id);
-        $mhs = Mahasiswa::pluck('nama', 'id');
-        return view('backend.proposal-kp.add', compact('mhs', 'KP'));
-    }
-    public function insert(Request $request)
-    {
-        $this->validate($request, $this->anggota_validation_rules);
-        $data = $request->all();
-        KpMahasiswa::create($data);
-        session()->flash('flash_success', 'Berhasil menambahkan data anggota KP');
-        return redirect()->route('admin.proposal-kp.showkelompok',$request->kp_proposal_id);
-    }
+        
     
 }
