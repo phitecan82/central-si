@@ -135,5 +135,9 @@ class SidangController extends Controller
             
             return redirect('admin/sidang');
     }
+    public function add(){
+
+        
+    }
   
 }
