@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use DB;
 use App\Mahasiswa;
 use App\TaPesertaSemhas;
@@ -12,10 +13,13 @@ use App\Ruangan;
 use App\Dosen;
 use App\TaPengujiSidang;
 
+
+
 class SidangController extends Controller
 {
     public function index()
     {
+
         $taSidang = DB::table('mahasiswa')
                              ->join('tugas_akhir', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
                              ->join('ta_sempro', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
@@ -153,5 +157,7 @@ class SidangController extends Controller
         TaPengujiSidang::create($data);
         session()->flash('flash_success', 'Berhasil menambahkan data Penguji Sidang');
         return redirect()->route('admin.sidang_ta.showkelompok',$request->sidang_ta_id);
+        return view('backend.sidang_ta.index');
+
     }
 }

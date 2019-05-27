@@ -11,6 +11,7 @@ class TaSidang extends Model
     protected $guarded = [];
 
     // Tambahkan Kode yang diperlukan dibawah ini
+
     public function taPengujiSidang()
     {
         return $this->hasMany(TaPengujiSidang::class);
@@ -25,6 +26,8 @@ class TaSidang extends Model
     {
         return $this->belongsTo(Ruangan::class);
     }
+
+
 
 
 }

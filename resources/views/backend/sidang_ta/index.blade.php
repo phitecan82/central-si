@@ -4,6 +4,7 @@
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
         'Mahasiswa' => route('admin.sidang_ta.index'),
+        'Mahasiswa' => route('admin.mahasiswa.index'),
         'Index' => '#'
     ]) !!}
 @endsection

@@ -49,11 +49,15 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
     // Routing sidang TA
+
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
     Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
     Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
     Route::get('/admin/sidang/{taSidang}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
     Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
+
+
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
 
 
     /** Pengelolaan Penelitian */
