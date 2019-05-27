@@ -50,6 +50,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
     // Routing sidang TA
 
+
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
     Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
     Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
@@ -59,6 +60,16 @@ Route::get('/', 'HomeController@index')->name('home');
 
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang.index');
 
+
+
+    Route::get('/admin/sidang_ta', 'SidangController@index')->name('admin.sidang_ta.index');
+    Route::post('/admin/sidang_ta', 'SidangController@store')->name('admin.sidang_ta.store'); //routing simpan data sidangta baru
+    Route::get('/admin/sidang_ta/create', 'SidangController@create')->name('admin.sidang_ta.create'); //routing tampilkan form data sidangta baru
+    Route::delete('/admin/sidang_ta/{sidangta}', 'SidangController@destroy')->name('admin.sidang_ta.destroy'); //routing hapus data sidangta baru
+    Route::patch('/admin/sidang_ta/{sidangta}', 'SidangController@update')->name('admin.sidang_ta.update'); //routing simpan perubahan data sidangta
+
+    Route::get('/admin/sidang_ta/{sidangta}', 'SidangtaController@show')->name('admin.sidang_ta.show'); //routing tampilkan detail sidangta
+    Route::get('/admin/sidang_ta/{sidangta}/edit', 'SidangtaController@edit')->name('admin.sidang_ta.edit');  //routing tampilkan form edit sidangta
 
     /** Pengelolaan Penelitian */
     Route::get('/admin/penelitian', 'PenelitianController@index')->name('admin.penelitian.index');  //routing lihat daftar mahasiswa
