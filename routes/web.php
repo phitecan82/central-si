@@ -49,7 +49,7 @@ Route::get('/', 'HomeController@index')->name('home');
 
 
     // Routing sidang TA
- HEAD
+ 
 
 
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
