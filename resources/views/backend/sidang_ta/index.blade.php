@@ -41,29 +41,26 @@
 
                     <table class="table table-striped">
                         <thead>
-                        <tr>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">NIM</th>
-                            <th class="text-center">Angkatan</th>
-                            <th class="text-center">Aksi</th>
-                        </tr>
+                            <tr>
+                                <th>id</th>
+                                <th class="text-center">Nama</th>
+                                <th class="text-center">NIM</th>
+                                <th class="text-center">Angkatan</th>
+                                <th class="text-center">Aksi</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        {{--  @foreach($mahasiswas as $mahasiswa)  --}}
+                        @foreach($sidangta  as $data)
                             <tr>
-                                <td>test</td>
-                                <td class="text-center">test</td>
-                                <td class="text-center">test</td>
-                                <td class="text-center">
-                                    {{--  {!! cui_btn_view(route('admin.mahasiswa.show', [$mahasiswa->id])) !!}
-                                    {!! cui_btn_edit(route('admin.mahasiswa.edit', [$mahasiswa->id])) !!}
-                                    {!! cui_btn_delete(route('admin.mahasiswa.destroy', [$mahasiswa->id]), "Anda yakin akan menghapus data dosen ini?") !!}  --}}
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-primary']) }}
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-warning']) }} 
-                                        {{ Form::button('Test', ['class' => 'col-sm-2 btn btn-sml btn-danger']) }} 
+                                <td>{{ $data->id }}</td>
+                                <td>{{ $data->ta_semhas_id }}</td>
+                                <td class="text-center">{{ $data->nilai_angka }}</td>
+                                <td class="text-center">{{ $data->nilai_huruf }}</td>
+                                <td>                  
+                                    {!! cui_btn_view(route('admin.sidangta.show', [$data->id])) !!}
                                 </td>
                             </tr>
-                        {{--  @endforeach  --}}
+                         @endforeach
                         </tbody>
                     </table>
 
