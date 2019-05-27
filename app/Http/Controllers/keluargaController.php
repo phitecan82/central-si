@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 use App\Dosen;
 use App\keluarga;
+
 use Illuminate\Http\Request;
+
 
 class keluargaController extends Controller
 {
+  
   private $validation_rules = [
     'nama' => 'required',
     'hubungan' => 'required',
@@ -26,12 +29,26 @@ class keluargaController extends Controller
         return view('backend.keluarga.index', compact('keluargas'));
     }
 
-    
-     public function detail($keluarga)
-     {
-     	$keluarga=keluarga::findOrFail($keluarga);
-     	  return view('backend.keluarga.detail',compact('keluarga'));
-     }
+    public function show(keluarga $keluarga){
+        return view('backend.keluarga.show',compact('keluarga'));
+    }
+  public function create()
+    {
+        return view('backend.keluarga.create');
+    }
+
+     public function store(Request $request)
+    {
+       
+        $request->validate([
+            'id' => 'required',
+            'user_id' => 'required',
+            'nama' => 'required',
+            'hubungan'=>'required',
+            'hidup' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required'
+            ]);
 
      public function edit(Keluarga $keluarga)
      {
