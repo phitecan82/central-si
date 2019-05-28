@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
+
 use App\Mahasiswa;
 use App\TaPesertaSemhas;
-use App\TaSidang;
-use App\TaSemhas;
 use App\Ruangan;
 use App\Dosen;
 use App\TaPengujiSidang;
+use App\TaSidang;   
+use App\TaSemhas;
+use App\TaSempro;
+use App\TugasAkhir;
+use App\User;
+use DB;
+Use Exception;
 
 class SidangController extends Controller
 {
@@ -22,11 +27,12 @@ class SidangController extends Controller
                              ->join('ta_semhas', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
                              ->join('ta_sidang', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')
                              ->join('ruangan', 'ta_sidang.ruangan_id', '=', 'ruangan.id')
-                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama as nama_mhs', 'ta_sidang.*', 'ruangan.nama as nama_ruangan')->get();
+                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama_mahasiswa as nama_mhs', 'ta_sidang.*', 'ruangan.nama_ruangan as nama_ruangan')->get();
         $ruangan = $taSidang->pluck('nama_ruangan');
         $dosen = $taSidang->pluck('nama_dosen');
 
         return view('backend.sidang_ta.index', compact('taSidang'));
+        
     }
 
     public function create()
@@ -42,7 +48,7 @@ class SidangController extends Controller
                              ->join('tugas_akhir', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
                              ->join('ta_sempro', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
                              ->join('ta_semhas', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
-                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama as nama_mhs', 'ta_semhas.id as semhas_id')
+                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama_mahasiswa as nama_mhs', 'ta_semhas.id as semhas_id')
                              ->get();
         $mahasiswa =  $taSidang->pluck('nama_mhs', 'semhas_id');
         // dd($mahasiswa);
@@ -92,7 +98,7 @@ class SidangController extends Controller
                              ->join('tugas_akhir', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
                              ->join('ta_sempro', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
                              ->join('ta_semhas', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
-                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama as nama_mhs', 'ta_semhas.id as semhas_id')
+                             ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama_mahasiswa as nama_mhs', 'ta_semhas.id as semhas_id')
                              ->get();
         $mahasiswa =  $mhs_db->pluck('nama_mhs', 'semhas_id');
 
@@ -138,6 +144,30 @@ class SidangController extends Controller
     public function add(){
 
         
+    }
+    public function show($id)
+    {
+        $sidangta = DB::table('ta_sidang')
+        ->join('ta_semhas', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')
+        ->join('ta_sempro', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
+        ->join('tugas_akhir', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
+        ->join('mahasiswa', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
+        ->join('ruangan', 'ta_sidang.ruangan_id', '=', 'ruangan.id')
+        ->join('ta_penguji_sidang', 'ta_sidang.id', '=', 'ta_penguji_sidang.ta_sidang_id')
+        ->join('dosen', 'ta_penguji_sidang.dosen_id', '=', 'dosen.id')
+        ->select('dosen.nama','mahasiswa.nama_mahasiswa', 'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 'ta_sidang.sidang_time', 'ruangan.nama_ruangan', 'ta_sidang.nilai_angka', 'ta_sidang.nilai_huruf', 'ta_sidang.nilai_toefl')
+        ->where('ta_sidang.id', '=', $id)
+        ->get();
+        $sidangta = $sidangta[0];
+        return view('backend.sidang_ta.show', compact('sidangta'));
+    }
+    public function destroy(TaSidang $sidangta)
+    {
+        $user = User::find($sidangta->id);
+        $sidangta->delete();
+        optional($user)->delete();
+        session()->flash('flash_success', 'Berhasil menghapus data sidang ');
+        return redirect()->route('admin.sidang.index');
     }
   
 }

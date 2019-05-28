@@ -49,10 +49,14 @@ Route::middleware(['auth'])->group( function(){
     Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
     Route::get('/admin/sidang/{taSidang}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
     Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
+    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
+    Route::get('/admin/sidang/{taSidang}', 'SidangController@show')->name('admin.sidang_ta.show');
+    Route::delete('/admin/sidang/{taSidang}', 'SidangController@destroy')->name('admin.sidangta_ta.destroy');
 
-    Route::post('/admin/sidang_ta/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sidang baru
-    Route::get('/admin/sidang_ta/add', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
 
+    Route::post('/admin/sidang/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sida    ng baru
+    Route::get('/admin/sidang/add', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
+    
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
