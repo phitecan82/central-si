@@ -42,6 +42,7 @@ class AnggotaController extends Controller
     {
         
         $publikasi = PublikasiDosen::find($id);
+        // dd($p)
         $publikasi->delete();
     
         session()->flash('flash_success','berhasil menghapus data anggota');
@@ -49,6 +50,6 @@ class AnggotaController extends Controller
         $id = PublikasiDosen::findOrFail($id);
         $id = $id->publikasi_id;
         PublikasiDosen::destroy($id);
-    	return redirect()->route('admin.publikasi.index');
+    	return redirect('/admin/publikasi');
     }
 }
