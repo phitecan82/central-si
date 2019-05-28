@@ -7,6 +7,6 @@
 
 <div class="form-group">
     <label for="posisi">Posisi</label>
-    {{ Form::text('posisi', null, ['class' => 'form-control', 'id' => 'posisi', 'placeholder' => 'posisi']) }}
+    {{Form::select('posisi', [1=> 'Ketua', 2=> 'Anggota'], null, ['class' => 'form-control']) }}
 </div>
 

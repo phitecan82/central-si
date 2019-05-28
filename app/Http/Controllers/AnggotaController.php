@@ -40,9 +40,15 @@ class AnggotaController extends Controller
     }
     public function destroy($id)
     {
+        
+        $publikasi = PublikasiDosen::find($id);
+        $publikasi->delete();
+    
+        session()->flash('flash_success','berhasil menghapus data anggota');
+        return redirect()->route('admin.publikasi.index');
         $id = PublikasiDosen::findOrFail($id);
         $id = $id->publikasi_id;
         PublikasiDosen::destroy($id);
-    	return redirect()->route('admin.anggotapublikasi.index', [$id]);
+    	return redirect()->route('admin.publikasi.index');
     }
 }
