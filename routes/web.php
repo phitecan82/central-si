@@ -51,7 +51,7 @@ Route::middleware(['auth'])->group( function(){
     Route::patch('/admin/sidang/{taSidang}', 'SidangController@update')->name('admin.sidang_ta.update');
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
     Route::get('/admin/sidang/{taSidang}', 'SidangController@show')->name('admin.sidang_ta.show');
-    Route::delete('/admin/sidang/{taSidang}', 'SidangController@destroy')->name('admin.sidangta_ta.destroy');
+    Route::delete('/admin/sidang/{taSidang}', 'SidangController@destroy')->name('admin.sidang_ta.destroy');
 
 
     Route::post('/admin/sidang/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sida    ng baru

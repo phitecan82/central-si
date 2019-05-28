@@ -1,5 +1,17 @@
 @extends('backend.layouts.app')
 
+@section('breadcrumb')
+    {!! cui_breadcrumb([
+        'Home' => route('admin.home'),
+        'Mahasiswa' => route('admin.sidang_ta.index'),
+        'Index' => '#'
+    ]) !!}
+@endsection
+
+@section('toolbar')
+    {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'Kembali Ke Laman Sidang') !!}
+@endsection
+
 @section('content')
 
     <div class="row justify-content-center">
@@ -73,6 +85,8 @@
 
                 {{-- CARD FOOTER --}}
                 <div class="card-footer">
+                <input type="submit" class="btn btn-danger" value="Hapus Data Penguji Sidang"/>
+                <input type="submit" class="btn btn-primary" value="Tambah Data Penguji Sidang"/>
 
                 </div>
             </div>

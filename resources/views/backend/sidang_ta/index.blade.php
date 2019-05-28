@@ -57,7 +57,7 @@
                                     <td class="text-center">
                                          {{-- {!! cui_btn_view(route('admin.sidang_ta.show', [$taSidang->id])) !!} --}}
                                         {!! cui_btn_edit(route('admin.sidang_ta.edit', [$taSidang->id])) !!}
-                                        {{-- {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$taSidang->id]), "Anda yakin akan menghapus data dosen ini?") !!}  --}}
+                                        {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$taSidang->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
                                         {!! cui_btn_view(route('admin.sidang_ta.show', [$taSidang->id])) !!}
                                     </td>
                                 </tr>

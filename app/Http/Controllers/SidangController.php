@@ -166,8 +166,9 @@ class SidangController extends Controller
         $user = User::find($sidangta->id);
         $sidangta->delete();
         optional($user)->delete();
+        
         session()->flash('flash_success', 'Berhasil menghapus data sidang ');
-        return redirect()->route('admin.sidang.index');
+        return redirect()->route('admin.sidang_ta.index');
     }
   
 }
