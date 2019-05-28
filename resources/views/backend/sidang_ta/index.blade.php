@@ -55,7 +55,7 @@
                                     <td class="text-center">{{$taSidang->sidang_at}}</td>
                                     <td class="text-center">{{$taSidang->nama_ruangan}}</td>
                                     <td class="text-center">
-                                         {{-- {!! cui_btn_view(route('admin.sidang_ta.show', [$mahasiswa->id])) !!} --}}
+                                        {!! cui_btn_view(route('admin.sidang_ta.show', [$taSidang->id])) !!}
                                         {!! cui_btn_edit(route('admin.sidang_ta.edit', [$taSidang->id])) !!}
                                         {{-- {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$mahasiswa->id]), "Anda yakin akan menghapus data dosen ini?") !!}  --}}
                                     </td>

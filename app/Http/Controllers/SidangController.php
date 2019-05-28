@@ -28,6 +28,19 @@ class SidangController extends Controller
         return view('backend.sidang_ta.index', compact('taSidang'));
     }
 
+    public function show($id)
+    {
+        $sidangta = DB::table('ta_sidang')
+        ->join('tugas_akhir', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
+        ->join('ta_sempro', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
+        ->join('ta_semhas', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
+        ->select('mahasiswa.id as id_mhs', 'mahasiswa.nama as nama_mhs', 'ta_semhas.id as semhas_id')
+        ->where('ta_sidang.id', '=', $id)
+        ->get();
+        // $sidangta = $sidangta[0];
+        return view('backend.sidang_ta.show', compact('sidangta'));
+    }
+
     public function create()
     {
         // $semhas_db = DB::table('ta_peserta_semhas')
