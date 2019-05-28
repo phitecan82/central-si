@@ -44,7 +44,7 @@
                                         {!! cui_btn_view(route('admin.sidang_ta.show', [$sidangta->id])) !!} 
                                         {!! cui_btn_edit(route('admin.sidang_ta.edit', [$sidangta->id])) !!}
                                         {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$sidangta->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
-                                        {!! cui_btn_view(route('admin.sidang_ta.show', [$sidangta->id])) !!}
+                                        git push origin master
                                 </td>
                             </tr>
                         @endforeach
