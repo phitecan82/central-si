@@ -80,7 +80,7 @@ class MahasiswaController extends Controller
         $mahasiswa->user->update([
             'password' => bcrypt('secret'),
             'email' => request('email'),
-            'status' => 1,  
+            'status' => 1,
         ]);
 
         session()->flash('flash_success', 'Berhasil mengupdate data mahasiswa '.$mahasiswa->nama);

@@ -60,7 +60,7 @@
 
                     <div class="form-group">
                         <label for="ruangan"><strong>Nama Ruangan</strong></label>
-                        {{ Form::text('nama_ruangan', null, ['class' => 'form-control-plaintext','readonly' => 'readonly']) }}
+                        {{ Form::text('nama_ruang', null, ['class' => 'form-control-plaintext','readonly' => 'readonly']) }}
                     </div>
 
                     <div class="form-group">
@@ -86,7 +86,9 @@
                 {{-- CARD FOOTER --}}
                 <div class="card-footer">
                 <input type="submit" class="btn btn-danger" value="Hapus Data Penguji Sidang"/>
-                <input type="submit" class="btn btn-primary" value="Tambah Data Penguji Sidang"/>
+                <a href="backend.sidang_ta.add">
+                    <button class="btn btn-primary">Tambah Dosen Penguji Sidang</button>
+                </a>
 
                 </div>
             </div>
