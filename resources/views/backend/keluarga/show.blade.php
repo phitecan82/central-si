@@ -4,12 +4,13 @@
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
         $user => route('admin.keluarga.index', [$user]),
-        'keluarga' => '#'
+        'keluarga' => route('admin.keluarga.show', [$user, $id]),
+        'index' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    
+    {!! cui_toolbar_btn(route('admin.keluarga.create', [$user, $id]), 'icon-plus', 'Tambah Anggota Keluarga') !!}
 @endsection
 
 @section('content')
@@ -19,7 +20,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>List {{ $user }}</strong>
+                    <strong>List keluarga {{ $nama->nama }}</strong>
                 </div>
 
                 {{-- CARD BODY--}}
@@ -39,7 +40,8 @@
                         <thead>
                         <tr>
                             <th>Nama</th>
-                            <th>{{ $nomor }}</th>
+                            <th>Hubungan</th>
+                            <th>Jenis Kelamin</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
@@ -47,9 +49,12 @@
                         @foreach($keluargas as $keluarga)
                             <tr>
                                 <td>{{ $keluarga->nama }}</td>
-                                <td>{{ $keluarga->nomor }}</td>
+                                <td>{{ $keluarga->hubungan }}</td>
+                                <td>{{ $keluarga->jenis_kelamin }}</td>
                                 <td class="text-center">
-                                    {!! cui_btn_view(route('admin.keluarga.show', [$user, $keluarga->id])) !!}
+                                    {!! cui_btn_view(route('admin.keluarga.detail', [$user, $keluarga->id])) !!}
+                                    {!! cui_btn_edit(route('admin.keluarga.edit', [$user, $keluarga->id])) !!}
+                                    {!! cui_btn_delete(route('admin.keluarga.destroy', [$user, $keluarga->id]), "Anda yakin akan menghapus data keluarga ini?") !!}
                                 </td>
                             </tr>
                         @endforeach

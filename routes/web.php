@@ -43,24 +43,30 @@ Route::middleware(['auth'])->group( function(){
     /** Routing untuk tugas mulai dari sini */
     /** Daftar Keluarga   */
     /**  */
-
-    Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar mahasiswa
-
-
-    Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar mahasiswa
-    Route::post('/admin/keluarga', 'kekuargaController@store')->name('admin.keluarga.store'); //routing simpan data mahasiswa baru
-    Route::get('/admin/keluarga/create', 'keluargaController@create')->name('admin.keluarga.create'); //routing tampilkan form data mahasiswa baru
-    Route::delete('/admin/keluarga/{keluarga}', 'keluargaController@destroy')->name('admin.keluarga.destroy'); //routing hapus data mahasiswa baru
-    Route::patch('/admin/keluarga/{keluarga}', 'keluargaController@update')->name('admin.keluarga.update'); //routing simpan perubahan data mahasiswa
-    Route::get('/admin/keluarga/{keluarga}', 'keluargaontroller@show')->name('admin.keluarga.show'); //routing tampilkan detail mahasiswa
-    Route::get('/admin/keluarga/{keluarga}/edit', 'keluargaController@edit')->name('admin.keluarga.edit');  //routing tampilkan form edit mahasiswa
-    Route::get('/admin/keluarga/{keluarga}', 'keluargaController@destroy')->name('admin.keluarga.destroy'); //routing hapus data mahasiswa baru
-    Route::post('/admin/keluarga/{keluarga}', 'keluargaontroller@show')->name('admin.keluarga.show'); //routing tampilkan detail mahasiswa
-
-
+    // Route::get('/admin/keluargam', 'keluargaController@indexMahasiswa')->name('admin.keluargam.index');  //routing lihat daftar keluarga
+    // Route::get('/admin/keluargad', 'keluargaController@indexDosen')->name('admin.keluargad.index');  //routing lihat daftar keluarga
+    // Route::get('/admin/keluargat', 'keluargaController@indexTendik')->name('admin.keluargat.index');  //routing lihat daftar keluarga
+    // Route::get('/admin/keluarga', 'keluargaController@index')->name('admin.keluarga.index');  //routing lihat daftar  keluarga
+    // Route::post('/admin/keluarga', 'keluargaController@store')->name('admin.keluarga.store'); //routing simpan data keluarga baru
+    // Route::get('/admin/keluarga/create', 'keluargaController@create')->name('admin.keluarga.create'); //routing tampilkan form data  keluarga baru
+    // Route::delete('/admin/keluarga/{kelaurga}', 'keluargaController@destroy')->name('admin.keluarga.destroy'); //routing hapus data  keluarga baru
+    // Route::patch('/admin/keluarga/{keluarga}', 'keluargaController@update')->name('admin.keluarga.update'); //routing simpan perubahan data  keluarga
+    // Route::get('/admin/keluarga/{keluarga}', 'keluargaController@show')->name('admin.keluarga.show'); //routing tampilkan detail  keluarga
+    // Route::post('/admin/keluarga/{keluarga}', 'keluargaController@show')->name('admin.keluarga.show'); //routing tampilkan detail  keluarga
+    // Route::get('/admin/keluarga/{keluarga}/edit', 'keluargaController@edit')->name('admin.keluarga.edit');  //routing tampilkan form edit  keluarga
+    // Route::get('/admin/keluarga/{keluarga}', 'keluargaController@detail')->name('admin.keluarga.detail');  //routing tampilkan 
+     Route::get('/admin/keluarga/{user}', 'KeluargaController@index')->name('admin.keluarga.index');
+     Route::get('/admin/keluarga/{user}/{id}', 'KeluargaController@show')->name('admin.keluarga.show');
+     Route::get('/admin/keluarga/{user}/{id}/detail', 'KeluargaController@detail')->name('admin.keluarga.detail');
+     Route::get('/admin/keluarga/{user}/{id}/create', 'KeluargaController@create')->name('admin.keluarga.create');
+     Route::get('/admin/keluarga/{user}/{id}/edit', 'KeluargaController@edit')->name('admin.keluarga.edit');
+     Route::delete('/admin/keluarga/{user}/{id}', 'KeluargaController@destroy')->name('admin.keluarga.destroy');
+     Route::post('/admin/keluarga', 'KeluargaController@store')->name('admin.keluarga.store');
+     Route::patch('/admin/keluarga/{user}/{id}/update', 'KeluargaController@update')->name('admin.keluarga.update');
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
+
 
 });
 
