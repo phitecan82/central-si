@@ -141,6 +141,18 @@ class SidangController extends Controller
     public function show($id)
     {
         $sidangta = TaSidang::where('ta_sidang.id', '=', $id)
+        ->select('mahasiswa.nama as nama_mahasiswa', 
+        'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 
+        'ta_sidang.sidang_time', 'ruangan.nama as nama_ruang', 'ta_sidang.nilai_angka',
+         'ta_sidang.nilai_huruf', 'ta_sidang.nilai_toefl')
+        ->join('ta_semhas', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')
+        ->join('ta_sempro', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
+        ->join('tugas_akhir', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
+        ->join('mahasiswa', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
+        ->join('ruangan', 'ta_sidang.ruangan_id', '=', 'ruangan.id')        
+        ->first();
+        // dd($sidangta);
+        $penguji = TaSidang::where('ta_sidang.id', '=', $id)
         ->select('dosen.nama as nama_dosen','mahasiswa.nama as nama_mahasiswa', 
         'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 
         'ta_sidang.sidang_time', 'ruangan.nama as nama_ruang', 'ta_sidang.nilai_angka',
@@ -152,9 +164,28 @@ class SidangController extends Controller
         ->join('ruangan', 'ta_sidang.ruangan_id', '=', 'ruangan.id')
         ->join('ta_penguji_sidang', 'ta_sidang.id', '=', 'ta_penguji_sidang.ta_sidang_id')
         ->join('dosen', 'dosen.id', '=', 'ta_penguji_sidang.dosen_id')
+        ->get();
+        // dd($penguji);
+        return view('backend.sidang_ta.show', compact('sidangta', 'penguji'));
+    }
+    public function lihat($id){
         
-        ->first();
-        return view('backend.sidang_ta.show', compact('sidangta'));
+        $sidangta = TaSidang::where('ta_sidang.id', '=', $id)
+        ->select('dosen.nama as nama_dosen','mahasiswa.nama as nama_mahasiswa', 
+        'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 
+        'ta_sidang.sidang_time', 'ruangan.nama as nama_ruang', 'ta_sidang.nilai_angka',
+         'ta_sidang.nilai_huruf', 'ta_sidang.nilai_toefl')
+        ->join('ta_semhas', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')
+        ->join('ta_sempro', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
+        ->join('tugas_akhir', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
+        ->join('mahasiswa', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')
+        ->join('ruangan', 'ta_sidang.ruangan_id', '=', 'ruangan.id')
+        ->join('ta_penguji_sidang', 'ta_sidang.id', '=', 'ta_penguji_sidang.ta_sidang_id')
+        ->join('dosen', 'dosen.id', '=', 'ta_penguji_sidang.dosen_id')
+        ->get();
+        // dd($sidangta);
+        return view('backend.sidang_ta.show_penguji', compact('sidangta'));
+
     }
     
     public function destroy($id)
@@ -171,10 +202,12 @@ class SidangController extends Controller
         session()->flash('flash_success', 'Berhasil menghapus data sidang ta dengan id '.$sidangta->id);
         return redirect()->route('admin.sidang_ta.index');
     }
-
-    public function destroydosen(TaPengujiSidang $sidangta)
+    public function hapus($id){
+        dd('hamdi');
+    }
+    public function destroydosen($sidangta)
     {
-    
+        dd($sidangta);
         $user = TaPengujiSidang::find($sidangta->id);
         $sidangta->delete();
         optional($user)->delete();
@@ -185,7 +218,7 @@ class SidangController extends Controller
     }
 
     public function add($id){
-
+        dd('tes');
          $sidangta = TaSidang::where('ta_sidang.id', '=', $id)
         ->select('dosen.nama as nama_dosen','dosen.id as id_dosen')
         ->join('dosen', 'dosen.id', '=', 'ta_penguji_sidang.dosen_id')

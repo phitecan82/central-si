@@ -13,7 +13,7 @@
 @endsection
 
 @section('content')
-    <div class="row justify-content-center">
+    <div class="row justify-content-center">    
         <div class="col">
             <div class="card">
 

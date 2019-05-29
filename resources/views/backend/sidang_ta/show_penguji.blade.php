@@ -25,53 +25,7 @@
 
 
                 {{-- CARD BODY--}}
-                <div class="card-body">
-
-                    <div class="form-group">
-                        <label for="nama"><strong>Nama Mahasiswa</strong></label>
-                        <p>{{$sidangta->nama_mahasiswa}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nim"><strong>Nim</strong></label>
-                        <p>{{$sidangta->nim}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="judul"><strong>Judul Tugas Akhir</strong></label>
-                        <p>{{$sidangta->judul}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sidang_at"><strong>Tanggal Sidang</strong></label>
-                        <p>{{$sidangta->sidang_at}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="sidang_time"><strong>Waktu Sidang</strong></label>
-                        <p>{{$sidangta->sidang_time}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="ruangan"><strong>Nama Ruangan</strong></label>
-                        <p>{{$sidangta->nama_ruang}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nilai_angka"><strong>Nilai Angka</strong></label>
-                        <p>{{$sidangta->nilai_angka}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nilai_huruf"><strong>Nilai Huruf</strong></label>
-                        <p>{{$sidangta->nilai_huruf}}</p>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nilai_toefl"><strong>Nilai Toefl</strong></label>
-                        <p>{{$sidangta->nilai_toefl}}</p>
-                    </div>
-                    
+                <div class="card-body">                    
                     <table class="table table-striped">
                         <thead>
                         <tr>
@@ -81,8 +35,7 @@
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
-                        <tbody>  
-                                @foreach($penguji as $sidangta)                        
+                        <tbody>                          
                                 <tr>
                                     <td class="text-center">{{$sidangta->nama_dosen}}</td>
                                     <td class="text-center">
@@ -108,10 +61,9 @@
                                     @endif
                                     </td>
                                     <td class="text-center">  
-                                    {!! cui_btn_delete(route('admin.sidang_ta.delete', [$sidangta->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
+                                    <!-- {!! cui_btn_delete(route('admin.sidang_ta.show_penguji', [$sidangta->id]), "Anda yakin akan menghapus data dosen ini?") !!}   -->
                                     </td>
                                 </tr>
-                                @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -120,6 +72,9 @@
 
                 {{-- CARD FOOTER --}}
                 <div class="card-footer">
+                <!-- <a href="backend.sidang_ta.penguji">
+                    <button class="btn btn-primary">Tambah Dosen Penguji Sidang</button>
+                </a> -->
 
                 </div>
             </div>

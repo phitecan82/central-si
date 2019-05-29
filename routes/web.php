@@ -46,22 +46,23 @@ Route::middleware(['auth'])->group( function(){
     // Routing sidang TA
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
     Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
-    Route::post('/admin/sidang/store', 'SidangController@store')->name('admin.sidang_ta.store');
+    Route::post('/admin/sidang', 'SidangController@store')->name('admin.sidang_ta.store');
     Route::get('/admin/sidang/{sidangta}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
-    Route::patch('/admin/sidang/{sidangta}', 'SidangController@update')->name('admin.sidang_ta.update');
-    Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
-    Route::get('/admin/sidang/{sidangta}', 'SidangController@show')->name('admin.sidang_ta.show');
+    Route::patch('/admin/sidang', 'SidangController@update')->name('admin.sidang_ta.update');
+    Route::get('/admin/sidang/{sidangta}/show', 'SidangController@show')->name('admin.sidang_ta.show');
     Route::delete('/admin/sidang/{sidangta}', 'SidangController@destroy')->name('admin.sidang_ta.destroy');
-   
-
+    
+    Route::delete('admin/sidang/penguji/{id}/del', 'SidangController@hapus')->name('admin.sidang_ta.delete');
+    
+    Route::get('/admin/sidang/penguji', 'SidangController@lihat')->name('admin.sidang_ta.show_penguji');
+    Route::get('/admin/sidang/{sidangta}/lihat', 'SidangController@lihat')->name('admin.sidang_ta.lihat');
     Route::post('/admin/sidang/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sida    ng baru
     Route::get('/admin/sidang/penguji/{sidangta}', 'SidangController@add')->name('admin.sidang_ta.penguji'); //routing menampilkan form tambah penguji sidang
-    
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
 });
-
+    
 Route::get('/', function () {
     return view('auth/login');
 });
