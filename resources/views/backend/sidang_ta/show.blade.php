@@ -9,7 +9,7 @@
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.sidang_ta.insert'), 'icon-plus', 'Tambah Penguji') !!}
+    {!! cui_toolbar_btn(route('admin.sidang_ta.penguji', [$id]), 'icon-plus', 'Tambah Penguji') !!}
     {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'Kembali Ke Laman Sidang') !!}
 @endsection
 
@@ -83,34 +83,28 @@
                         </tr>
                         </thead>
                         <tbody>  
-                                @foreach($penguji as $sidangta)                        
+                                @foreach($penguji as $penguji)                        
                                 <tr>
-                                    <td class="text-center">{{$sidangta->nama_dosen}}</td>
-                                    <td class="text-center">
-
-                                    @if($sidangta->jabatan = 1)
-
-                                    <p>ketua sidang</p>
-                                    @else
-
-                                    <p>anggota sidang</p>
-                                    
+                                    @if($penguji->ta_sidang_id == $id)
+                                        <td class="text-center">{{$penguji->nama_dosen}}</td>
+                                        <td class="text-center">
+                                            @if($penguji->jabatan == 1)
+                                                <p>ketua sidang</p>
+                                            @else
+                                                <p>anggota sidang</p>                  
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($penguji->jabatan == 0)
+                                                <p>Tidak Bersedia</p>
+                                            @else
+                                                <p>Bersedia</p>        
+                                            @endif
+                                        </td>
+                                        <td class="text-center">  
+                                        {!! cui_btn_delete(route('admin.sidang_ta.delete', [$penguji->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
+                                        </td>
                                     @endif
-                                    </td>
-                                     <td class="text-center">
-
-                                    @if($sidangta->jabatan = 0)
-
-                                    <p>Tidak Bersedia</p>
-                                    @else
-
-                                    <p>Bersedia</p>
-                                    
-                                    @endif
-                                    </td>
-                                    <td class="text-center">  
-                                    {!! cui_btn_delete(route('admin.sidang_ta.delete', [$sidangta->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
-                                    </td>
                                 </tr>
                                 @endforeach
                         </tbody>

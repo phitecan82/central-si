@@ -31,8 +31,8 @@
 </div>
 
 <div class="form-group">
-    <label for="nilai_huruf">Nilai Angka</label>
-    {{ Form::text('nilai_huruf', null, ['class' => 'form-control', 'id' => 'nilai_huruf', 'placeholder' => 'nilai_huruf', 'readonly']) }}
+    <label for="nilai_huruf">Nilai Huruf</label>
+    {{ Form::text('nilai_huruf', null, ['class' => 'form-control', 'id' => 'nilai_huruf', 'placeholder' => 'nilai_huruf',]) }}
 </div>
 
 <div class="form-group">

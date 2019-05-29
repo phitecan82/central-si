@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="card">
 
-               
+            {{ Form::open(['route' => 'admin.sidang_ta.insert', 'method' => 'post']) }}
 
                 {{--CARD HEADER --}}
                 <div class="card-header">
@@ -34,7 +34,7 @@
                     <input type="submit" class="btn btn-primary" value="Simpan"/>
                 </div>
 
-                {{ Form::close() }}
+            {{ Form::close() }}
             </div>
         </div>
     </div>
