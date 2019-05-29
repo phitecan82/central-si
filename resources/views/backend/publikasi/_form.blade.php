@@ -27,14 +27,15 @@
     <label for="url">URL</label>
     {{ Form::text('url', null, ['class' => 'form-control', 'id' => 'url', 'placeholder' => 'URL']) }}
 </div>
+<div class="form-group">
+    <label for="publisher">Publisher</label>
+    {{ Form::text('publisher', null, ['class' => 'form-control', 'id' => 'publisher', 'placeholder' => 'Publish Publikasi']) }}
+</div>
 
 <div class="form-group">
     <label for="file_artikel">File Artikel (PDF)</label>
     {{ Form::file('file_artikel', null, ['class' => 'form-control', 'id' => 'file_artikel'])}}
 </div>
 
-<div class="form-group">
-    <label for="publisher">Publish (PDF)</label>
-    {{ Form::file('publisher', null, ['class' => 'form-control', 'id' => 'publisher', 'placeholder' => 'Publish Publikasi']) }}
-</div>
+
 

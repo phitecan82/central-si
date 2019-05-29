@@ -9,13 +9,15 @@ class AnggotaController extends Controller
 {
     public function index($id)
     {
-        $publikasis=DB::table('publikasi')
-                    ->join('publikasi_dosen','publikasi.id','=','publikasi_dosen.publikasi_id')
-                    ->join('dosen','publikasi_dosen.dosen_id','=','dosen.id')
-                    ->select('dosen.nama','dosen.nip','publikasi_dosen.posisi', 'publikasi_dosen.id')
-                    ->where('publikasi.id','=',$id)
-                    ->paginate(25);
-        
+        // $publikasis=DB::table('publikasi')
+        //             ->join('publikasi_dosen','publikasi.id','=','publikasi_dosen.publikasi_id')
+        //             ->join('dosen','publikasi_dosen.dosen_id','=','dosen.id')
+        //             ->select('dosen.nama','dosen.nip','publikasi_dosen.posisi', 'publikasi_dosen.id')
+        //             ->where('publikasi.id','=',$id)
+        //             ->paginate(25);
+
+        $publikasis = Publikasi::find($id);
+        // dd($publikasis);
         return view('backend.anggotapublikasi.index', compact('publikasis', 'id'));
     }
     public function create($id)

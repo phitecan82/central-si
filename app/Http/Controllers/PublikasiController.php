@@ -23,7 +23,7 @@ class PublikasiController extends Controller
     		'jenis_publikasi' => 'numeric',
     		'total_dana' => 'numeric',
     		'file_artikel' => 'file|mimes:pdf',
-    		'publish' => 'file|mimes:pdf',
+    		'publisher' => 'required',
     		'url' => 'required'
     	]);
     	$publikasi = new Publikasi();
@@ -32,7 +32,8 @@ class PublikasiController extends Controller
     	$publikasi->nama_publikasi = $request->input('nama_publikasi');
     	$publikasi->jenis_publikasi = $request->input('jenis_publikasi');
     	$publikasi->total_dana = $request->input('total_dana');
-    	$publikasi->url = $request->input('url');
+			$publikasi->url = $request->input('url');
+			$publikasi->publisher = $request->input('publisher');
 			//simpan file
 			$file_artikel = null;
     	if($request->hasFile('file_artikel') && $request->file('file_artikel')->isValid())
@@ -43,18 +44,10 @@ class PublikasiController extends Controller
 				
     		//$filepath = $request->file_artikel->storeAs('publikasi_artikel', $filenameext);
 				//$publikasi->file_artikel = $filepath;
-				$file_artikel = $request->file_artikel->storeAs('public/file_artikel', $filenameext);
+				$file_artikel = $request->file_artikel->storeAs('public/file_artikel/', $filenameext);
+				// dd(1);
+				$publikasi->file_artikel = $filenameext;
 			}
-			$publisher = null;
-    	if($request->file('publisher')->isValid())
-    	{
-    		$filename = uniqid('Publisher-');
-    		$fileext = $request->file('publisher')->extension();
-    		$filenameext = $filename.'.'.$fileext;
-    		//$filepath = $request->publisher->storeAs('publikasi_publisher', $filenameext);
-				//$publikasi->publisher = $filepath;
-				$publisher = $request->publisher->storeAs('public/publisher', $filenameext);
-    	}
     	$publikasi->save();
     	return redirect()->route('admin.publikasi.index', [$publikasi]);
     }
@@ -72,7 +65,7 @@ class PublikasiController extends Controller
 					'jenis_publikasi' => 'numeric',
 					'total_dana' => 'numeric',
 					'file_artikel' => 'file|mimes:pdf',
-					'publisher' => 'file|mimes:pdf',
+					'publisher' => 'required',
 					'url' => 'required' 
 			]);
 
@@ -84,6 +77,7 @@ class PublikasiController extends Controller
 	//$publikasi ->file_artikel = $request->input ('file_artikel');
 	//$publikasi ->publisher = $request->input ('publisher');
 	$publikasi ->url = $request->input ('url');
+	$publikasi->publisher = $request->input('publisher');
 	//simpan file upload
 	if($request->File('file_artikel')->isValid())
 		{
@@ -123,21 +117,6 @@ class PublikasiController extends Controller
 				$filepath = $request->file_artikel->storeAs('/publikasi_artikel', $filenameext);
 				$publikasi->file_artikel = $filepath;
 				}
-			if($request->file('publisher')->isValid())
-				{
-				//Hapus file jika sebelumnya sudah ada
-						if(Storage ::exists($publikasi->publisher))
-						{
-						Storage ::delete($publikasi->publisher);
-						}
-				//simpan file yang diupload
-				$filename = uniqid('publisher-');
-				$fileext = $request->file ('publisher')->extension();
-				$filenameext =$filename.'.'.$fileext;
-
-    		$filepath = $request->file_artikel->storeAs('/publikasi_artikel', $filenameext);
-    		$publikasi->file_artikel = $filepath;
-   			}
 			if($publikasi->save())
 				{
 					session()->flash('flash_success','Berhasil memperbaharui data publikasi');
@@ -159,5 +138,15 @@ class PublikasiController extends Controller
 		public function show(Publikasi $publikasi)
     {
 		return view('backend.publikasi.show', compact('publikasi'));
+		}
+
+		public function getDownload($type, $file_id){
+			$lokasi = null;
+			if($type == 'file_artikel'){
+				$lokasi = 'public/file_artikel/';
+			}
+			return response()->file(
+				storage_path('app/'.$lokasi.'/'.$file_id)
+			);
 		}
 }

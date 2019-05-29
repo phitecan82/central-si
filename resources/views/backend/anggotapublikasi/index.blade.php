@@ -24,14 +24,21 @@
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
-
+                    <div class="form-group col-md-6">
+                        <label for="file_artikel"><strong>Judul Publikasi</strong></label>
+                        {{ Form::text('file_artikel', $publikasis->judul, ['class' => 'form-control-plaintext', 'id' => 'file_artikel', 'readonly' => 'readonly']) }}
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="file_artikel"><strong>Nama Publikasi</strong></label>
+                        {{ Form::text('file_artikel', $publikasis->nama_publikasi, ['class' => 'form-control-plaintext', 'id' => 'file_artikel', 'readonly' => 'readonly']) }}
+                    </div>
                     <div class="row justify-content-end">
                         <div class="col-md-6 text-right">
                            
                         </div>
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
-                                {{ $publikasis->links() }}
+  
                             </div>
                         </div>
                     </div>
@@ -46,10 +53,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($publikasis as $publikasi)
+                        @forelse($publikasis->anggotas as $publikasi)
                             <tr>
-                                <td class="text-center">{{ $publikasi->nama }}</td>
-                                <td class="text-center">{{ $publikasi->nip }}</td>
+                                <td class="text-center">{{ $publikasi->dosen->nama }}</td>
+                                <td class="text-center">{{ $publikasi->dosen->nip }}</td>
                                 <td class="text-center">@if($publikasi->posisi == 1)ketua @else  anggota @endif</td>
                                 <td class="text-center">
                                     {!! cui_btn_delete(route('admin.anggotapublikasi.destroy', [$publikasi->id]), "Anda yakin akan menghapus data publikasi ini?") !!}
@@ -72,7 +79,7 @@
                         </div>
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
-                                {{ $publikasis->links() }}
+                                
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    publikasii
+                    publikasi
                 </div>
 
                 {{-- CARD BODY--}}
@@ -40,13 +40,20 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="nama_publikasi"><strong>nama_publikasi</strong></label>
+                        <label for="nama_publikasi"><strong>nama publikasi</strong></label>
                         {{ Form::text('nama_publikasi', null, ['class' => 'form-control-plaintext', 'id' => 'nama_publikasi', 'readonly' => 'readonly']) }}
                     </div>
 
                     <div class="form-group">
-                        <label for="jenis_publikasi"><strong>jenis_publikasi</strong></label>
-                        {{ Form::text('jenis_publikasi', null, ['class' => 'form-control-plaintext', 'id' => 'jenis_publikasi', 'readonly' => 'readonly']) }}
+                        <label for="jenis_publikasi"><strong>jenis publikasi</strong></label>
+                        <br>
+                        @if($publikasi->jenis_publikasi == 1)
+                            jurnal
+                        @elseif($publikasi->jenis_publikasi == 2)
+                            artikel
+                        @elseif($publikasi->jenis_publikasi == 3)
+                            karya ilmiah  
+                        @endif
                     </div>
 
                     <div class="form-group">
@@ -55,7 +62,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="total_dana"><strong>total_dana</strong></label>
+                        <label for="total_dana"><strong>total dana</strong></label>
                         {{ Form::text( 'total_dana', null, ['class' => 'form-control-plaintext', 'id' => 'total_dana', 'readonly' => 'readonly']) }}
                     </div>
 
@@ -65,17 +72,18 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="file_artikel"><strong>file_artikel</strong></label>
+                        <label for="file_artikel"><strong>file artikel</strong></label>
                         {{ Form::text('file_artikel', null, ['class' => 'form-control-plaintext', 'id' => 'file_artikel', 'readonly' => 'readonly']) }}
+                        <a href="{{url('/admin/publikasi/file_artikel')}}/{{$publikasi->file_artikel}}"download="">download</a>
                     </div>
 
                     <div class="form-group">
-                        <label for="created_at"><strong>created_at</strong></label>
+                        <label for="created_at"><strong>created at</strong></label>
                         {{ Form::text('created_at', null, ['class' => 'form-control-plaintext', 'id' => 'created_at', 'readonly' => 'readonly']) }}
                     </div>
 
                     <div class="form-group">
-                        <label for="update_at"><strong>update_at</strong></label>
+                        <label for="update_at"><strong>update at</strong></label>
                         {{ Form::text('update_at', null, ['class' => 'form-control-plaintext', 'id' => 'update_at', 'readonly' => 'readonly']) }}
                     </div>
 

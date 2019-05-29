@@ -49,7 +49,7 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/publikasi/{publikasi}/edit', 'PublikasiController@edit')->name('admin.publikasi.edit');  
     Route::get('/admin/publikasi', 'PublikasiController@index')->name('admin.publikasi.index');  
     Route::post('/admin/publikasi', 'PublikasiController@store')->name('admin.publikasi.store'); 
-    
+    Route::get('/admin/publikasi/{type}/{file_id}', 'PublikasiController@getDownload')->name('admin.publikasi.download'); 
     
     Route::get('/admin/anggotapublikasi/{id}/add', 'AnggotaController@create')->name('admin.anggotapublikasi.create'); 
     Route::get('/admin/anggotapublikasi/{id}', 'AnggotaController@index')->name('admin.anggotapublikasi.index'); 
