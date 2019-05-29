@@ -49,11 +49,7 @@
                             <i class="nav-icon fas fa-minus"></i> TA Mahasiswa
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.sidang_ta.show_penguji') }}">
-                            <i class="nav-icon fas fa-minus"></i> TA Dosen Penguji
-                        </a>
-                    </li>
+            
                     
                 </ul>
             </li>

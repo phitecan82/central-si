@@ -145,7 +145,7 @@ class SidangController extends Controller
         'mahasiswa.nim', 'tugas_akhir.judul', 'ta_sidang.sidang_at', 
         'ta_sidang.sidang_time', 'ruangan.nama as nama_ruang', 'ta_sidang.nilai_angka',
          'ta_sidang.nilai_huruf', 'ta_sidang.nilai_toefl')
-        ->join('ta_semhas', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')
+        ->join('ta_semhas', 'ta_sidang.ta_semhas_id', '=', 'ta_semhas.id')  
         ->join('ta_sempro', 'ta_semhas.ta_sempro_id', '=', 'ta_sempro.id')
         ->join('tugas_akhir', 'ta_sempro.tugas_akhir_id', '=', 'tugas_akhir.id')
         ->join('mahasiswa', 'tugas_akhir.mahasiswa_id', '=', 'mahasiswa.id')

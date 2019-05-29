@@ -9,6 +9,7 @@
 @endsection
 
 @section('toolbar')
+    {!! cui_toolbar_btn(route('admin.sidang_ta.insert'), 'icon-plus', 'Tambah Penguji') !!}
     {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'Kembali Ke Laman Sidang') !!}
 @endsection
 
