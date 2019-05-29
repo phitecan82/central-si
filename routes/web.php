@@ -52,10 +52,10 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/sidang', 'SidangController@index')->name('admin.sidang_ta.index');
     Route::get('/admin/sidang/{sidangta}', 'SidangController@show')->name('admin.sidang_ta.show');
     Route::delete('/admin/sidang/{sidangta}', 'SidangController@destroy')->name('admin.sidang_ta.destroy');
-
+   
 
     Route::post('/admin/sidang/member', 'SidangController@insert')->name('admin.sidang_ta.insert'); //roting simpan data sida    ng baru
-    Route::get('/admin/sidang/add/{sidangta}', 'SidangController@add')->name('admin.sidang_ta.add'); //routing menampilkan form tambah penguji sidang
+    Route::get('/admin/sidang/penguji/{sidangta}', 'SidangController@add')->name('admin.sidang_ta.penguji'); //routing menampilkan form tambah penguji sidang
     
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');

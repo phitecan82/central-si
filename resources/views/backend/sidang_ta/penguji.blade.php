@@ -17,11 +17,11 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::model($taSidang, ['route' => , 'method' => 'patch', 'enctype '=> 'multipart/form-data']) }}
+               
 
                 {{--CARD HEADER --}}
                 <div class="card-header">
-                    Edit Mahasiswa
+                    Tambah Data Penguji Sidang
                 </div>
 
                 {{-- CARD BODY--}}
