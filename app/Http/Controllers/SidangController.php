@@ -7,6 +7,8 @@ use App\Ruangan;
 use App\Dosen;
 use App\TaPengujiSidang;  
 use App\TaSemhas;
+use App\TaSidang;
+
 use DB;
 
 class SidangController extends Controller
