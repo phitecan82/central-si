@@ -222,18 +222,21 @@ class SidangController extends Controller
                 ->where('jabatan', 0)
                 ->where('bersedia', 1);
 
-        if($data->isEmpty()){
-            $penguji = new TaPengujiSidang;
-            $penguji->ta_sidang_id = $request->input('ta_sidang_id');
-            $penguji->dosen_id = $request->input('dosen_id');
-            $penguji->jabatan = $request->input('jabatan');
-            $penguji->bersedia = $request->input('bersedia');
-            session()->flash('flash_success', 'Berhasil menambahkan penguji sidang');
-            $penguji->save();
-        } else{
-            session()->flash('flash_warning', 'Ketua sidang sudah ada');
-        }  
+        if($request->input('jabatan') == 0){
+            if(!($data->isEmpty())){
+                session()->flash('flash_warning', 'Ketua sidang sudah ada');
+                return redirect()->route('admin.sidang_ta.show', [$request->ta_sidang_id]);
+            } 
+        }
 
+        $penguji = new TaPengujiSidang;
+        $penguji->ta_sidang_id = $request->input('ta_sidang_id');
+        $penguji->dosen_id = $request->input('dosen_id');
+        $penguji->jabatan = $request->input('jabatan');
+        $penguji->bersedia = $request->input('bersedia');
+        session()->flash('flash_success', 'Berhasil menambahkan penguji sidang');
+        $penguji->save();   
+        
         return redirect()->route('admin.sidang_ta.show', [$request->ta_sidang_id]);
     }
 
