@@ -48,7 +48,7 @@ Route::middleware(['auth'])->group( function(){
     Route::get('/admin/sidang/create', 'SidangController@create')->name('admin.sidang_ta.create');
     Route::post('/admin/sidang', 'SidangController@store')->name('admin.sidang_ta.store');
     Route::get('/admin/sidang/{sidangta}/edit', 'SidangController@edit')->name('admin.sidang_ta.edit');
-    Route::patch('/admin/sidang', 'SidangController@update')->name('admin.sidang_ta.update');
+    Route::patch('/admin/sidang/{id}', 'SidangController@update')->name('admin.sidang_ta.update');
     Route::get('/admin/sidang/{sidangta}/show', 'SidangController@show')->name('admin.sidang_ta.show');
     Route::delete('/admin/sidang/{sidangta}', 'SidangController@destroy')->name('admin.sidang_ta.destroy');
 
@@ -62,6 +62,19 @@ Route::middleware(['auth'])->group( function(){
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
+    Route::get('storage/{filename}', function ($filename)
+    {
+        $path = public_path('storage/files/' . $filename);
+
+        if (!File::exists($path)) {
+            abort(404);
+        }
+        $file = File::get($path);
+        $type = File::mimeType($path);
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+        return $response;
+    });
 });
     
 Route::get('/', function () {

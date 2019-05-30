@@ -9,7 +9,7 @@
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-plus', 'List Sidang TA') !!}
+    {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'List Sidang TA') !!}
 @endsection
 
 @section('content')

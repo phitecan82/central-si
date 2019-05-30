@@ -27,11 +27,6 @@
 
                     <div class="row justify-content-end">
                         <div class="col-md-6 text-right">
-                            <form method="post" action="{{ route('admin.mahasiswacari.show') }}" class="form-inline">
-                                {{ csrf_field() }}
-                                <input type="text" name="keyword" class="form-control" value="@if(isset($keyword)) {{ $keyword }} @endif" placeholder="Masukkan Keyword" />
-                                <input type="submit" name="submit" class="btn btn-primary" value="Cari" />
-                            </form>
                         </div>
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
@@ -42,20 +37,24 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Tanggal Sidang TA</th>
+                            <th class="text-center">Nama Mahasiswa</th>
+                            <th class="text-center">NIM</th>
                             <th class="text-center">Ruangan</th>
+                            <th class="text-center">Tanggal Sidang TA</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
                           @foreach($taSidang as $taSidang)                             
                                 <tr>
+                                    <td>{{$taSidang->nama_mahasiswa}}</td>
+                                    <td class="text-center">{{$taSidang->nim}}</td>
+                                    <td class="text-center">{{$taSidang->nama_ruang}}</td>
                                     <td class="text-center">{{$taSidang->sidang_at}}</td>
-                                    <td class="text-center">{{$taSidang->nama_ruangan}}</td>
                                     <td class="text-center">
                                          {!! cui_btn_view(route('admin.sidang_ta.show', [$taSidang->id])) !!}
                                         {!! cui_btn_edit(route('admin.sidang_ta.edit', [$taSidang->id])) !!}
-                                        {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$taSidang->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
+                                        {!! cui_btn_delete(route('admin.sidang_ta.destroy', [$taSidang->id]), "Anda yakin akan menghapus data sidang TA ini?") !!}  
                                         
                                     </td>
                                 </tr>

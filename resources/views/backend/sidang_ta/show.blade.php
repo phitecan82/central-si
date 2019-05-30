@@ -10,7 +10,8 @@
 
 @section('toolbar')
     {!! cui_toolbar_btn(route('admin.sidang_ta.penguji', [$id]), 'icon-plus', 'Tambah Penguji') !!}
-    {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'Kembali Ke Laman Sidang') !!}
+    {!! cui_toolbar_btn(route('admin.sidang_ta.index'), 'icon-list', 'List Sidang TA') !!}
+    {!! cui_toolbar_btn(route('admin.sidang_ta.edit', [$id]), 'icon-pencil', 'Edit Data Sidang TA Ini') !!}
 @endsection
 
 @section('content')
@@ -21,7 +22,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    Sidang
+                    Detail Sidang
                 </div>
 
 
@@ -59,6 +60,11 @@
                     </div>
 
                     <div class="form-group">
+                        <label><strong>Status Sidang</strong></label>
+                        <p>{{$sidangta->status}}</p>
+                    </div>
+
+                    <div class="form-group">
                         <label for="nilai_angka"><strong>Nilai Angka</strong></label>
                         <p>{{$sidangta->nilai_angka}}</p>
                     </div>
@@ -72,50 +78,43 @@
                         <label for="nilai_toefl"><strong>Nilai Toefl</strong></label>
                         <p>{{$sidangta->nilai_toefl}}</p>
                     </div>
+
+                    <div class="form-group">
+                        <label><strong>File-file</strong></label>
+                        <p>
+                            <a href="{{ url('/storage/'.$sidangta->file_toefl) }}">File TOEFL</a> | 
+                            <a href="{{ url('/storage/'.$sidangta->file_laporan) }}">File Laporan</a> | 
+                            <a href="{{ url('/storage/'.$sidangta->file_lembaran_pengesahan) }}">File Lembaran Pengesahan</a>
+                        </p>
+                    </div>
                     
+                    <label><b>Daftar Penguji Sidang</b></label>
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Nama Dosen</th>
+                            <th class="text-center">Nama Penguji</th>
                             <th class="text-center">Jabatan</th>
                             <th class="text-center">Bersedia</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>  
-                                @foreach($penguji as $penguji)                        
+                                @foreach($pengujis as $penguji)                        
                                 <tr>
-                                    @if($penguji->ta_sidang_id == $id)
-                                        <td class="text-center">{{$penguji->nama_dosen}}</td>
-                                        <td class="text-center">
-                                            @if($penguji->jabatan == 1)
-                                                <p>ketua sidang</p>
-                                            @else
-                                                <p>anggota sidang</p>                  
-                                            @endif
-                                        </td>
-                                        <td class="text-center">
-                                            @if($penguji->jabatan == 0)
-                                                <p>Tidak Bersedia</p>
-                                            @else
-                                                <p>Bersedia</p>        
-                                            @endif
-                                        </td>
+                                        <td class="text-center">{{$penguji->nama}}</td>
+                                        <td class="text-center">{{$penguji->jabatan}}</td>
+                                        <td class="text-center">{{$penguji->bersedia}}</td>
                                         <td class="text-center">  
-                                        {!! cui_btn_delete(route('admin.sidang_ta.delete', [$penguji->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
+                                            {!! cui_btn_delete(route('admin.sidang_ta.delete', [$penguji->id]), "Anda yakin akan menghapus data dosen ini?") !!}  
                                         </td>
-                                    @endif
                                 </tr>
                                 @endforeach
                         </tbody>
                     </table>
                 </div>
-                
-        
 
                 {{-- CARD FOOTER --}}
                 <div class="card-footer">
-
                 </div>
             </div>
         </div>
