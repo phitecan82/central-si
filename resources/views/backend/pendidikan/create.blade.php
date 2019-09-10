@@ -3,13 +3,13 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Mahasiswa2' => route('admin.mahasiswa2.index'),
+        'pendidikan' => route('admin.pendidikan.index'),
         'Edit' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.mahasiswa2.index'), 'icon-list', 'List Mahasiswa') !!}
+    {!! cui_toolbar_btn(route('admin.pendidikan.index'), 'icon-list', 'Daftar Riwayat Pendidikan') !!}
 @endsection
 
 @section('content')
@@ -17,20 +17,21 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.mahasiswa2.store', 'method' => 'post']) }}
+                {{ Form::open(['route' => 'admin.pendidikan.store', 'method' => 'post','files'=>'true']) }}
 
                 {{-- CARD HEADER --}}
                 <div class="card-header">
-                    Tambah Mahasiswa
+                    Tambah Riwayat Pendidikan
                 </div>
 
                 {{-- CARD BODY --}}
                 <div class="card-body">
-                    @include('backend.mahasiswa2._form')
+                    @include('backend.pendidikan._form')
                 </div>
 
                 {{-- CARD FOOTER --}}
                 <div class="card-footer">
+                     <p>*Wajib Diisi!</p>
                     <input type="submit" value="Simpan" class="btn btn-primary"/>
                 </div>
 

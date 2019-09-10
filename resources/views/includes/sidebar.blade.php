@@ -68,10 +68,12 @@
                 <a class="nav-link" href="{{route ('admin.tendik.index')}}">
                     <i class="nav-icon fas fa-book"></i> Kelola Tendik</a>
                
-
-                    
+            </li>
         </ul>
     </nav>
 
     <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-</div><!--sidebar-->
+</div>
+
+<!--sidebar-->
+  

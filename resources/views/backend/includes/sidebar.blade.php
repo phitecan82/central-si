@@ -115,6 +115,13 @@
                         </a>
                     </li>
 
+                <!--Riwayat Pendidikan-->
+
+            <li class="nav-item">
+
+                <a class="nav-link " href="{{ route('admin.pendidikan.index') }}">
+                    <i class="nav-icon fas fa-book"></i> Riwayat Pendidikan</a>
+            </li>
         </ul>
     </nav>
 
