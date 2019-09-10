@@ -3,13 +3,13 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'keluarga' => route('admin.keluarga.index'),
-        'Index' => '#'
+        $user => route('admin.keluarga.index', [$user]),
+        'keluarga' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.keluarga.create'), 'icon-plus', 'Tambah Daftar Keluarga') !!}
+    
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    <strong>List Daftar Keluarga</strong>
+                    <strong>List {{ $user }}</strong>
                 </div>
 
                 {{-- CARD BODY--}}
@@ -27,11 +27,10 @@
 
                     <div class="row justify-content-end">
                         <div class="col-md-6 text-right">
-                           
                         </div>
                         <div class="col-md-6 justify-content-end">
                             <div class="row justify-content-end">
-                                {{$keluargas ->links() }}
+                                {{ $keluargas->links() }}
                             </div>
                         </div>
                     </div>
@@ -39,35 +38,21 @@
                     <table class="table table-striped">
                         <thead>
                         <tr>
-                            <th class="text-center">Nama</th>
-                            <th class="text-center">Alamat</th>
-                            <th class="text-center">No.Hp</th>
+                            <th>Nama</th>
+                            <th>{{ $nomor }}</th>
                             <th class="text-center">Aksi</th>
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($keluargas  as $keluarga )
+                        @foreach($keluargas as $keluarga)
                             <tr>
-                                <td>{{$keluarga ->nama }}</td>
-                                <td class="text-center">{{$keluarga ->alamat }}</td>
-                                <td class="text-center">{{ $keluarga ->no_hp }}</td>
+                                <td>{{ $keluarga->nama }}</td>
+                                <td>{{ $keluarga->nomor }}</td>
                                 <td class="text-center">
-                                    {!! cui_btn_view(route('admin.keluarga.show', [$keluarga->id])) !!}
-                                    {!! cui_btn_edit(route('admin.keluarga.edit', [$keluarga->id])) !!}
-                                    {!! cui_btn_delete(route('admin.keluarga.destroy', [$keluarga->id]), "Anda yakin akan menghapus data keluarga ini?") !!}
+                                    {!! cui_btn_view(route('admin.keluarga.show', [$user, $keluarga->id])) !!}
                                 </td>
                             </tr>
-
-
-                        @empty
-
-                        <tr> 
-                           <td colspan="4" class="text-center" >
-                               Data Daftar Keluarga  Belum Ada
-                           </td>
-                        </tr>
-
-                        @endforelse
+                        @endforeach
                         </tbody>
                     </table>
 

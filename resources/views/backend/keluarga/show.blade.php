@@ -3,81 +3,83 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'keluarga' => route('admin.keluarga.index'),
-        'Detail' => '#'
+        $user => route('admin.keluarga.index', [$user]),
+        'keluarga' => route('admin.keluarga.show', [$user, $id]),
+        'index' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn_delete(route('admin.keluarga.destroy', [$keluarga->id]), $keluarga->id, 'icon-trash', 'Hapus Dosen', 'Anda yakin akan menghapus dosen ini?') !!}
-    {!! cui_toolbar_btn(route('admin.keluarga.index'), 'icon-list', 'List keluarga') !!}
-    {!! cui_toolbar_btn(route('admin.keluarga.create'), 'icon-plus', 'Tambah Dosen') !!}
+    {!! cui_toolbar_btn(route('admin.keluarga.create', [$user, $id]), 'icon-plus', 'Tambah Anggota Keluarga') !!}
 @endsection
 
 @section('content')
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col">
             <div class="card">
 
                 {{-- CARD HEADER--}}
                 <div class="card-header">
-                    keluarga
+                    <strong>List keluarga {{ $nama->nama }}</strong>
                 </div>
 
                 {{-- CARD BODY--}}
                 <div class="card-body">
 
-                    {{ Form::model($keluarga, []) }}
-
-                    <div class="form-group">
-                        <label for="nama"><strong>Nama</strong></label>
-                        {{ Form::text('nama', null, ['class' => 'form-control-plaintext', 'id' => 'nama', 'readonly' => 'readonly']) }}
+                    <div class="row justify-content-end">
+                        <div class="col-md-6 text-right">
+                        </div>
+                        <div class="col-md-6 justify-content-end">
+                            <div class="row justify-content-end">
+                                {{ $keluargas->links() }}
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="nip"><strong>NIP</strong></label>
-                        {{ Form::text('nip', null, ['class' => 'form-control-plaintext', 'id' => 'nip', 'readonly' => 'readonly']) }}
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Hubungan</th>
+                            <th>Jenis Kelamin</th>
+                            <th class="text-center">Aksi</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($keluargas as $keluarga)
+                            <tr>
+                                <td>{{ $keluarga->nama }}</td>
+                                <td>{{ $keluarga->hubungan }}</td>
+                                <td>{{ $keluarga->jenis_kelamin }}</td>
+                                <td class="text-center">
+                                    {!! cui_btn_view(route('admin.keluarga.detail', [$user, $keluarga->id])) !!}
+                                    {!! cui_btn_edit(route('admin.keluarga.edit', [$user, $keluarga->id])) !!}
+                                    {!! cui_btn_delete(route('admin.keluarga.destroy', [$user, $keluarga->id]), "Anda yakin akan menghapus data keluarga ini?") !!}
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                    <div class="row justify-content-end">
+                        <div class="col-md-6 text-right">
+
+                        </div>
+                        <div class="col-md-6 justify-content-end">
+                            <div class="row justify-content-end">
+                                {{ $keluargas->links() }}
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="nip"><strong>NIDN</strong></label>
-                        {{ Form::text('nidn', null, ['class' => 'form-control-plaintext', 'id' => 'nidn', 'readonly' => 'readonly']) }}
-                    </div>
+                </div><!--card-body-->
 
-                    <div class="form-group">
-                        <label for="nik"><strong>NIK</strong></label>
-                        {{ Form::text('nik', null, ['class' => 'form-control-plaintext', 'id' => 'nik', 'readonly' => 'readonly']) }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tempat_lahir"><strong>Tempat Lahir</strong></label>
-                        {{ Form::text('tempat_lahir', null, ['class' => 'form-control-plaintext', 'id' => 'tempat_lahir', 'readonly' => 'readonly']) }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="tanggal_lahir"><strong>Tanggal Lahir</strong></label>
-                        {{ Form::input('date', 'tanggal_lahir', null, ['class' => 'form-control-plaintext', 'id' => 'nip', 'readonly' => 'readonly']) }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="email"><strong>Email</strong></label>
-                        {{ Form::text('email', null, ['class' => 'form-control-plaintext', 'id' => 'email', 'readonly' => 'readonly']) }}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="nohp"><strong>No. HP</strong></label>
-                        {{ Form::text('nohp', null, ['class' => 'form-control-plaintext', 'id' => 'nohp', 'readonly' => 'readonly']) }}
-                    </div>
-
-                    {{ Form::close() }}
-
-                </div>
-
-                {{-- CARD FOOTER --}}
+                {{-- CARD FOOTER--}}
                 <div class="card-footer">
-
                 </div>
-            </div>
-        </div>
-    </div>
+
+            </div><!--card-->
+        </div><!--col-->
+    </div><!--row-->
+
 @endsection

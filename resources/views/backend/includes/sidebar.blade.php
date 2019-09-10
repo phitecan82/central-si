@@ -70,6 +70,32 @@
 
                 </ul>
             </li>
+
+            <!-- Kelola keluarga users -->
+            <li class="nav-item nav-dropdown">
+
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user-follow"></i> Pengelolaan Keluarga</a>
+                <ul class="nav-dropdown-items">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.keluarga.index', ['dosen']) }}">
+                            <i class="nav-icon fas fa-minus"></i> Dosen
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.keluarga.index', ['tendik']) }}">
+                            <i class="nav-icon fas fa-minus"></i> Tendik
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.keluarga.index', ['mahasiswa']) }}">
+                            <i class="nav-icon fas fa-minus"></i> Mahasiswa
+                        </a>
+                    </li>
+                </ul>
                     {{-- Pengelolaan Nilai Tugas Akhir --}} 
              <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.nilaiTA.index') }}">
