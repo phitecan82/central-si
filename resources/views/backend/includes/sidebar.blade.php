@@ -179,6 +179,11 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.publikasi.index') }}">
+                            <i class="nav-icon fas fa-book"></i> Publikasi Dosen
+                        </a>
+                    </li>
         </ul>
     </nav>
 
