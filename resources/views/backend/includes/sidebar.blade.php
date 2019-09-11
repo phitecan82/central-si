@@ -42,6 +42,16 @@
                 </ul>
             </li>
 
+
+                    {{-- Menu Proposal KP--}}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('admin.proposal-kp.index') }}">
+                            <i class="nav-icon icon-doc"></i> Proposal KP
+                        </a>
+                    </li>
+
+
+
             <li class="nav-item nav-dropdown">
 
                 <a class="nav-link nav-dropdown-toggle" href="#">
