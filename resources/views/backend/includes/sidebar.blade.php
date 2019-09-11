@@ -135,6 +135,14 @@
                 </a>
             </li>
 
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.prestasi-mhs.index') }}">
+                    <i class="nav-icon fas fa-minus"></i> Prestasi Mahasiswa
+                </a>
+            </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('admin.organisasi-mhs.index') }}">
                             <i class="nav-icon fas fa-users"></i> Organisasi Mahasiswa
@@ -148,6 +156,7 @@
                 <a class="nav-link " href="{{ route('admin.pendidikan.index') }}">
                     <i class="nav-icon fas fa-book"></i> Riwayat Pendidikan</a>
             </li>
+
         </ul>
     </nav>
 

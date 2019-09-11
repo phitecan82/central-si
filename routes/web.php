@@ -28,6 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dosen/{dosen}', 'DosenController@show')->name('admin.dosen.show'); //routing tampilkan detail dosen
     Route::get('/admin/dosen/{dosen}/edit', 'DosenController@edit')->name('admin.dosen.edit');  //routing tampilkan form edit dosen
 
+
 /** Routing Pengelolaan Mahasiswa */
 Route::post('/admin/mahasiswa/cari', 'MahasiswaCariController@show')->name('admin.mahasiswacari.show'); //routing pencarian mahasiswa
 Route::get('/admin/mahasiswa/cari', 'MahasiswaController@index')->name('admin.mahasiswacari.index'); //routing pencarian mahasiswa
@@ -52,6 +53,7 @@ Route::post('/admin/mahasiswa/cari', 'pengabdiancariController@show')->name('adm
    Route::patch('/admin/pengabdian/{pengabdian}', 'pengabdianController@update')->name('admin.pengabdian.update'); //routing simpan perubahan data mahasiswa
    Route::get('/admin/pengabdian/{pengabdian}', 'pengabdianController@show')->name('admin.pengabdian.show'); //routing tampilkan detail mahasiswa
    Route::get('/admin/pengabdian/{pengabdian}/edit', 'pengabdianController@edit')->name('admin.pengabdian.edit');  //routing tampilkan form edit mahasiswa
+
 
     /** Routing untuk tugas mulai dari sini */
 
@@ -155,6 +157,34 @@ Route::post('/admin/mahasiswa/cari', 'pengabdiancariController@show')->name('adm
 
     Route::get('pembimbing/submit', 'PembimbingSubmissionController@create')->name('admin.pembimbing.create');
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
+
+
+    /** Routing Prestasi Mahasiswa */
+    Route::get('/admin/prestasi-mhs', 'MahasiswaPrestasiController@index')->name('admin.prestasi-mhs.index');
+    Route::post('/admin/prestasi-mhs', 'MahasiswaPrestasiController@store')->name('admin.prestasi-mhs.store');
+    Route::get('/admin/prestasi-mhs/create', 'MahasiswaPrestasiController@create')->name('admin.prestasi-mhs.create');
+    Route::delete('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@destroy')->name('admin.prestasi-mhs.destroy');
+    Route::patch('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@update')->name('admin.prestasi-mhs.update');
+    Route::get('/admin/prestasi-mhs/{id}', 'MahasiswaPrestasiController@show')->name('admin.prestasi-mhs.show');
+    Route::get('/admin/prestasi-mhs/{id}/edit', 'MahasiswaPrestasiController@edit')->name('admin.prestasi-mhs.edit');
+
+    Route::get('storage/{filename}', function ($filename)
+    {
+        $path = storage_path('app/public/prestasi/' . $filename . '/' .$filename);
+        
+        if (!File::exists($path)) {
+            abort(404);
+        }
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
+    })->name('storage.prestasi-mhs.sertifikat');
+
     // Routing pengelolaan tendik
     Route::post('/admin/tendik/cari', 'TendikCariController@show')->name('admin.tendikcari.show'); //routing pencarian tendik
     Route::get('/admin/tendik/cari', 'TendikController@index')->name('admin.tendikcari.index'); //routing pencarian mahasiswa
