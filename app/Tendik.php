@@ -10,6 +10,17 @@ class Tendik extends Model
     protected $guarded = [];
     public $incrementing = false;
 
+    public function user()
+    {
+        return $this->hasOne(User::class, 'id');
+    }
+
+    public function getEmailAttribute($value)
+    {
+       return optional($this->user)->email;
+    }
+
+
     // Tambahkan Kode yang diperlukan dibawah ini
 
 }
