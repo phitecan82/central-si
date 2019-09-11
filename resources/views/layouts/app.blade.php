@@ -17,6 +17,9 @@
     {{ style(mix('css/backend.css')) }}
     @stack('after-styles')
 
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
 </head>
 
 <body>
@@ -83,6 +86,7 @@
     <script src="{!! asset(mix('js/vendor.js')) !!}" ></script>
     <script src="{!! asset(mix('js/backend.js')) !!}" ></script>
     @stack('after-scripts')
+    @yield('script')
 
 </body>
 </html>
