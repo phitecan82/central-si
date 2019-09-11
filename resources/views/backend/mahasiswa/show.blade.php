@@ -10,7 +10,7 @@
 
 @section('toolbar')
     {!! cui_toolbar_btn_delete(route('admin.mahasiswa.destroy', [$mahasiswa->id]), $mahasiswa->id, 'icon-trash', 'Hapus Mahasiswa', 'Anda yakin akan menghapus.mahasiswa.ini?') !!}
-    {!! cui_toolbar_btn(route('admin.mahasiswa.index'), 'icon-list', 'List Mahasiswa') !!}
+    {!! cui_toolba r_btn(route('admin.mahasiswa.index'), 'icon-list', 'List Mahasiswa') !!}
     {!! cui_toolbar_btn(route('admin.mahasiswa.create'), 'icon-plus', 'Tambah Mahasiswa') !!}
 @endsection
 

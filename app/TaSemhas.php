@@ -27,5 +27,9 @@ class TaSemhas extends Model
     {
         return $this->hasMany(TaSidang::class);
     }
-
+    
+    public function peserta_semhas()
+    {
+        return $this->hasOne(TaPesertaSemhas::class,'ta_semhas_id','id');
+    }
 }

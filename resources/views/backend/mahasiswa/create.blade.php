@@ -3,13 +3,13 @@
 @section('breadcrumb')
     {!! cui_breadcrumb([
         'Home' => route('admin.home'),
-        'Mahasiswa' => route('admin.mahasiswa.index'),
+        'Mahasiswa2' => route('admin.mahasiswa2.index'),
         'Edit' => '#'
     ]) !!}
 @endsection
 
 @section('toolbar')
-    {!! cui_toolbar_btn(route('admin.mahasiswa.index'), 'icon-list', 'List Mahasiswa') !!}
+    {!! cui_toolbar_btn(route('admin.mahasiswa2.index'), 'icon-list', 'List Mahasiswa') !!}
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <div class="card">
 
-                {{ Form::open(['route' => 'admin.mahasiswa.store', 'method' => 'post']) }}
+                {{ Form::open(['route' => 'admin.mahasiswa2.store', 'method' => 'post']) }}
 
                 {{-- CARD HEADER --}}
                 <div class="card-header">
@@ -26,7 +26,7 @@
 
                 {{-- CARD BODY --}}
                 <div class="card-body">
-                    @include('backend.mahasiswa._form')
+                    @include('backend.mahasiswa2._form')
                 </div>
 
                 {{-- CARD FOOTER --}}
