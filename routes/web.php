@@ -175,6 +175,19 @@ Route::post('/admin/mahasiswa/cari', 'pengabdiancariController@show')->name('adm
     Route::post('pembimbing/submit', 'PembimbingSubmissionController@store')->name('admin.pembimbing.store');
 
 
+    /** Pengelolaan bimbingan TA*/
+    Route::get('/admin/bimbingan', 'BimbinganController@index')->name('admin.bimbingan.index');  //routing lihat daftar penelitian
+    Route::post('/admin/bimbingan', 'BimbinganController@store')->name('admin.bimbingan.store'); //routing simpan data bimbingan baru
+    Route::get('/admin/bimbingan/create/{id}', 'BimbinganController@create')->name('admin.bimbingan.create'); //routing tampilkan form data bimbingan baru
+    Route::patch('/admin/bimbingan/{bimbingan}', 'BimbinganController@update')->name('admin.bimbingan.update'); //routing simpan perubahan data bimbingan
+    Route::get('/admin/bimbingan/{bimbingan}', 'BimbinganController@show')->name('admin.bimbingan.show'); //routing tampilkan detail bimbingan
+    Route::get('/admin/bimbingan/{bimbingan}/show', 'BimbinganController@detail')->name('admin.bimbingan.detail'); //routing tampilkan detail bimbingan
+    Route::get('/admin/bimbingan/{bimbingan}/edit', 'BimbinganController@edit')->name('admin.bimbingan.edit');  //routing tampilkan form edit bimbingan
+    Route::get('storage/{filename}', function ($filename)
+    {
+        $path = storage_path('app\public\bimbingan/' . $filename);
+        // dd($path);
+
     /** Routing Prestasi Mahasiswa */
     Route::get('/admin/prestasi-mhs', 'MahasiswaPrestasiController@index')->name('admin.prestasi-mhs.index');
     Route::post('/admin/prestasi-mhs', 'MahasiswaPrestasiController@store')->name('admin.prestasi-mhs.store');
@@ -199,6 +212,7 @@ Route::post('/admin/mahasiswa/cari', 'pengabdiancariController@show')->name('adm
         $response->header("Content-Type", $type);
 
         return $response;
+
     })->name('storage.prestasi-mhs.sertifikat');
 
     // Routing pengelolaan tendik

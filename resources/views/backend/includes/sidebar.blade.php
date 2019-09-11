@@ -167,6 +167,13 @@
                     <i class="nav-icon fas fa-book"></i> Riwayat Pendidikan</a>
             </li>
 
+            <!-- Kelola bimbingan TA -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.bimbingan.index') }}">
+                    <i class="nav-icon fas fa-book"></i> Kelola Bimbingan TA
+                </a>
+            </li>
+
         </ul>
     </nav>
 
