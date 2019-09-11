@@ -28,7 +28,7 @@
                 {{-- CARD BODY--}}
                 <div class="card-body">
 
-                    {{ Form::model($mahasiswa, []) }}
+                    {{ Form::model($mahasiswa,  []) }}
 
                     <div class="form-group">
                         <label for="nama"><strong>Nama</strong></label>
